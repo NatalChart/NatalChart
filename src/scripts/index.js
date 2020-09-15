@@ -21,13 +21,18 @@ console.log("Hello, za world!")
 // 	ctx.moveTo(radius * Math.sin(angle_fix), radius * Math.cos(angle_fix))
 // }
 
-var centerX = 305
-var centerY = 305
-var circle_house_outer_radius = 300
-var circle_house_inner_radius = 275
-var circle_sign_outer_radius = 275
-var circle_sign_inner_radius = 250
-var circle_planets_radius = 215
+const centerX = 305
+const centerY = 305
+const circle_house_outer_radius = 300
+const circle_house_inner_radius = 275
+const circle_sign_outer_radius = 275
+const circle_sign_inner_radius = 250
+const circle_planets_radius = 215
+
+const axialTilt = 23.4392911
+const grad = Math.PI / 180
+const julianDaysTo1970 = 2440587.5
+const millisecondsInDay = 86400000
 
 function withinEpsilon(x, y, epsilon){
 	return x < y + epsilon && x > y - epsilon
@@ -52,10 +57,13 @@ function checkBond(bonds, i, j, diff, epsilon){
 	}
 }
 
-let grad = Math.PI / 180
 
-function draw(zodiac_angle, celestial_body_angles, epsilon = 1, zero_shift_angle = 90) {
+
+function draw(celestial_body_angles, ascendant_angle, epsilon = 4, zero_shift_angle = 90) {
 	var canvas = document.getElementById('canvas');
+	if(ascendant_angle != NaN){
+		ascendant_angle = - (ascendant_angle + 150)
+	}
 	if (canvas.getContext) {
 		var ctx = canvas.getContext('2d');
 		ctx.font = '40px serif';
@@ -134,7 +142,7 @@ function draw(zodiac_angle, celestial_body_angles, epsilon = 1, zero_shift_angle
 
 		let cel_bod_coords = []
 		for (let i = 0; i < 11; i++){
-			let angle = (celestial_body_angles[i] - zero_shift_angle) * grad
+			let angle = (celestial_body_angles[i] - zero_shift_angle - ascendant_angle) * grad
 			let x = circle_planets_radius * Math.sin(angle)
 			let y = circle_planets_radius * Math.cos(angle)
 			cel_bod_coords.push({
@@ -145,8 +153,8 @@ function draw(zodiac_angle, celestial_body_angles, epsilon = 1, zero_shift_angle
 			ctx.arc(x,y,2,0, Math.PI * 2, true)
 
 			ctx.fillText(celestial_body_symbols[i], 
-				radius_for_cel_bodies * Math.sin((celestial_body_angles[i] - zero_shift_angle) * grad) - 10,
-				radius_for_cel_bodies * Math.cos((celestial_body_angles[i] - zero_shift_angle) * grad) + 10)
+				radius_for_cel_bodies * Math.sin((celestial_body_angles[i] - zero_shift_angle - ascendant_angle) * grad) - 10,
+				radius_for_cel_bodies * Math.cos((celestial_body_angles[i] - zero_shift_angle - ascendant_angle) * grad) + 10)
 		}
 		
 		let bonds = []
@@ -178,7 +186,7 @@ function draw(zodiac_angle, celestial_body_angles, epsilon = 1, zero_shift_angle
 		ctx.strokeStyle ="#000"; ctx.setLineDash([]); //ctx.lineWidth=1; 
 
 		//zodiac signs (probly should draw it last)
-		let signs_angle_shift = zodiac_angle
+		let signs_angle_shift = ascendant_angle
 		ctx.font = '20px serif';
 		// for(let i = 1; i <= 3; i+= 1){
 		// 	//let sign_numb = ((i+2)%12)
@@ -235,51 +243,131 @@ function draw(zodiac_angle, celestial_body_angles, epsilon = 1, zero_shift_angle
 
 
 
-let celestial_body_angles = [
-	0,
-	231,
-	50,
-	61,
-	75,
-	28,
-	300,
-	250,
-	125,
-	350,
-	150,
-]
-
-let epsilon = 5
-
-
-
-//ephemeris.Results 
-
-draw(0, celestial_body_angles, epsilon)
+// let celestial_body_angles = [
+// 	0,
+// 	231,
+// 	50,
+// 	61,
+// 	75,
+// 	28,
+// 	300,
+// 	250,
+// 	125,
+// 	350,
+// 	150,
+// ]
 
 let datePicker = document.getElementById("dataPicker")
-dataPicker.oninput = () => {
+let timePicker = document.getElementById("timePicker")
+let longPicker = document.getElementById("longPicker")
+let latPicker = document.getElementById("latPicker")
+let btnGo = document.getElementById("btnDraw")
+
+function calculateLST(utc, long){
+	console.log(utc)
+	//https://radixpro.com/a4a-start/sidereal-time/#:~:text=Sidereal%20time%20is%20defined%20by,(360%20divided%20by%2024).
+	let days = Math.floor(utc.getTime() / millisecondsInDay)
+	let julianDays = julianDaysTo1970 + days
+	//console.log(days)
+	console.log("julian days: " + julianDays)
+	let T = (julianDays - 2451545) / 36525 // factor T
+	//console.log(T)
+	let ST0 = 100.46061837 + 36000.770053608 * T + 0.000387933 * Math.pow(T, 2) - Math.pow(T, 3)/38710000
+	//console.log(ST0)
+	ST0 = ST0 % 360
+	//console.log(ST0)
+	if (ST0 < 0){
+		ST0 = ST0 + 360
+	}
+	//console.log(ST0)
+	ST0 = ST0 / 15
+	console.log(ST0)
+
+	let tmp = utc.getHours() + utc.getMinutes() / 60 + utc.getSeconds() /3600 
+	console.log(tmp)
+	tmp = tmp * 1.00273790935 //const
+	let ST = (ST0 + tmp) % 24
+	console.log(ST)
+	let LST = ST + (long / 15)
+	console.log(LST)
+	return LST
+}
+
+function calculateAsc(utc, lat, long){
+	//https://radixpro.com/a4a-start/the-ascendant/
+	// utc = new Date("2016-11-02 21:17:30")
+	// long = 6.9
+	// lat = 52.21
+
+	let localSiderealTime = calculateLST(utc, long)
+	console.log(localSiderealTime)
+	// // console.log(lat)
+	// // console.log(axialTilt)
+	// let y = - Math.cos(localSiderealTime * grad)
+	// let x = Math.sin(localSiderealTime * grad) * Math.cos(axialTilt * grad) + Math.tan(lat * grad) * Math.sin(axialTilt * grad)
+	
+	let RAMC = localSiderealTime * 15
+	console.log("RAMC = " + RAMC)
+	let y = Math.cos(RAMC * grad)
+	let x = -(Math.sin(axialTilt * grad) * Math.tan(lat * grad) + Math.cos(axialTilt * grad) * Math.sin(RAMC * grad))
+	console.log(x)
+	console.log(y)
+	console.log(y/x)
+	let ascendant = Math.atan(y/x)
+	ascendant = ascendant / grad
+	console.log("Asc: " + ascendant)
+	//this is needed if atan is used instead of atan2
+	if (ascendant < 0){
+		ascendant = ascendant + 360
+	}
+	if (ascendant > 360){
+		ascendant = ascendant % 360
+	}
+
+	console.log("Asc final: " + ascendant)
+	return ascendant
+}
+
+function startDrawing(){
 	let date_raw = dataPicker.value
+	let time_raw = timePicker.value
+	let lat = parseInt(latPicker.value)
+	let long = parseInt(longPicker.value)
 	console.log(date_raw)
-	let date = new Date(date_raw)
+	console.log(time_raw)
+	console.log(date_raw + " " + time_raw)
+	let date = new Date(date_raw + " " + time_raw)
 	console.log(date)
-	console.log(date.getFullYear())
-	console.log(date.getMonth())
-	console.log(date.getDate())
 	const ephemeris = new Ephemeris({
-		year: date.getFullYear(), month: date.getMonth(), day: date.getDate(), hours: 0, minutes: 0, latitude: 41.37, longitude: -71.1, calculateShadows: false
-	  })
+		year: date.getFullYear(), month: date.getMonth(), day: date.getDate(), hours: date.getHours(), minutes: date.getMinutes(), latitude: lat, longitude: long, calculateShadows: false
+	})
 	console.log(ephemeris.Earth)
+	console.log(ephemeris.Observer)
 	console.log(ephemeris.Results)
 	let body_angles = []
 	celestial_body_names.forEach((item)=>{
-		console.log(ephemeris[item])
-		console.log(ephemeris[item].position.apparentLongitude)
+		//console.log(ephemeris[item])
+		//console.log(ephemeris[item].position.apparentLongitude)
 		body_angles.push(ephemeris[item].position.apparentLongitude)
 	})
-	let zodiac_angle = ephemeris.Earth.perihelion
-	draw(0, body_angles, epsilon)
+	let ascendant = calculateAsc(date, ephemeris.Observer.latitude, ephemeris.Observer.longitude)
+	draw(body_angles, ascendant)
 }
+//ephemeris.Results 
+
+
+btnGo.onclick = () => {
+	startDrawing()
+	// let date_raw = dataPicker.value
+	// console.log(date_raw)
+	// let date = new Date(date_raw)
+	// console.log(date)
+	// console.log(date.getFullYear())
+	// console.log(date.getMonth())
+	// console.log(date.getDate())
+	// 
+}
+startDrawing()
 // // var slider = document.getElementById("myRange");
 // // var output = document.getElementById("output");
 // output.innerHTML = slider.value; // Display the default slider value
@@ -289,3 +377,5 @@ dataPicker.oninput = () => {
 // 	output.innerHTML = this.value;
 // 	draw(0, celestial_body_angles, this.value, epsilon)
 // }
+
+//TODO add https://leafletjs.com/ map for picking coords
