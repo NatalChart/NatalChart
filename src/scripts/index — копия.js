@@ -1,4 +1,3 @@
-//import { NULL } from 'node-sass';
 // import { qs, qsa, $on, $delegate } from './utils';
 
 import '../stylesheets/style.scss';
@@ -72,15 +71,15 @@ class Natal{
 	}
 
 	//input - array of bond ids
-	setHighlightedBonds(bond_ids){
-		this.highlighted_bonds = new Set()
-		bond_ids.forEach((bond_id) => {
-			this.highlighted_bonds.add(bond_id)
-		})
-		this.bonds.forEach(() => {
+	// setHighlightedBonds(bond_ids){
+	// 	this.highlighted_bonds = new Set()
+	// 	bond_ids.forEach((bond_id) => {
+	// 		this.highlighted_bonds.add(bond_id)
+	// 	})
+	// 	this.bonds.forEach(() => {
 
-		})
-	}
+	// 	})
+	// }
 
 	//override ascendant_angle
 	forseSetAscendantAngle(val){
@@ -319,13 +318,13 @@ class Natal{
 			
 			//bonds between celestial bodies
 			this.bonds.forEach((bond) => {
-				if (highlight_mode){
-					if(this.highlighted_bonds.includes(bond.id)){
-						ctx.globalAlpha = 1
-					}else{
-						ctx.globalAlpha = 0.1
-					}
-				}
+				// if (highlight_mode){
+				// 	if(this.highlighted_bonds.includes(bond.id)){
+				// 		ctx.globalAlpha = 1
+				// 	}else{
+				// 		ctx.globalAlpha = 0.1
+				// 	}
+				// }
 				ctx.beginPath()
 				ctx.strokeStyle = bondTypesToColors[bond.type]
 				ctx.setLineDash(bondTypesToLineStyle[bond.type])
