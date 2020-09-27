@@ -13,6 +13,21 @@ export var signsSymbols = [
 	"♓︎"   // pisces       // рыбы
 ]
 
+export var signsNames = [
+	"aries",
+	"taurus",
+	"gemini",
+	"cancer",
+	"leo",
+	"virgo",
+	"libra",
+	"scorpio",
+	"sagittariu",
+	"capricorn",
+	"aquarius",
+	"pisces "
+]
+
 export var celestialBodyNames = [
 	'sun',
 	'moon',

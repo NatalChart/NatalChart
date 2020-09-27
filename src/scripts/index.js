@@ -6,9 +6,10 @@ import '../stylesheets/style.scss';
 // console.log('Hello!');
 
 import Ephemeris from './ephemeris/Ephemeris'
-import {signsSymbols as signsSymbols, 
+import {signsSymbols,
+	signsNames,
 	celestialBodyNames, 
-	celestialBodySymbols as celestialBodySymbols,
+	celestialBodySymbols,
 	bondTypesToAngles,
 	bondTypesToColors,
 	bondTypesToLineStyle} 
@@ -67,7 +68,7 @@ class Natal{
 			this.epsilon = val
 			console.log("Epsilon set to " + val)
 		} else {
-			this.epsilon = 3
+			this.epsilon = 0
 		}
 		this.makeBonds()
 		this.render()
@@ -76,8 +77,8 @@ class Natal{
 
 	//input - array of bond ids
 	setHighlightedBonds(bondIds){
-		console.log("DEBUG")
-		console.log(bondIds)
+		// console.log("DEBUG")
+		// console.log(bondIds)
 		this.highlightedBonds = new Set()
 		bondIds.forEach((bondId) => {
 			this.highlightedBonds.add(parseInt(bondId))
@@ -87,8 +88,8 @@ class Natal{
 			this.highlightedPlanets.add(this.bonds[bondId].from)
 			this.highlightedPlanets.add(this.bonds[bondId].to)
 		})
-		console.log(this.highlightedBonds)
-		console.log(this.highlightedPlanets)
+		// console.log(this.highlightedBonds)
+		// console.log(this.highlightedPlanets)
 		this.render()
 	}
 
@@ -118,8 +119,17 @@ class Natal{
 		let bondId = 0
 		for (let i = 0; i < lenght - 1; i++) {
 			for (let j = i + 1; j < lenght; j++){
-				let diff = Math.abs(this.celestialBodyAngles[i] - this.celestialBodyAngles[j])
+				let diffLeft = Math.abs(this.celestialBodyAngles[i] - this.celestialBodyAngles[j])
+				let diffRight = 360 - diffLeft
+				let diff = Math.min(diffLeft, diffRight)
 				bondId += this.checkBond(this.bonds, i, j, diff, bondId)
+				// console.log("drrr")
+				// console.log(diffLeft)
+				// console.log(diffRight)
+				// console.log(diff)
+				// console.log(this.celestialBodyAngles[i])
+				// console.log(this.celestialBodyAngles[j])
+				// console.log(tmp)
 			}
 		}
 		console.log("Bonds: ")
@@ -163,9 +173,20 @@ class Natal{
 	getCelBodyCoordString(){
 		let tmp = []
 		this.ephemeris.Results.forEach((celBody, i) => {
-			tmp.push(`<div>${celestialBodySymbols[i]} ${celBody.key}: ${celBody.position.apparentLongitude30String}</div>`)
+			tmp.push(`<div>${celBody.key} ${celestialBodySymbols[i]}: ${celBody.position.apparentLongitude30String}</div>`)
 		})
 		return tmp.join("")
+	}
+
+	getAscendantString(){
+		let tmp = this.ascendant
+		let signN = Math.floor(this.ascendant / 30)
+		let angle = this.ascendant % 30
+		console.log("ASC")
+		console.log(tmp)
+		console.log(signN)
+		console.log(angle)
+		return `${signsNames[signN]} ${Number.parseFloat(angle).toFixed(3)}°`
 	}
 
 	draw(date, long, lat, epsilon = NaN){
@@ -287,8 +308,8 @@ class Natal{
 	render() {
 		if (this.canvas.getContext) {
 			let highlightMode = this.highlightedBonds.size > 0
-			console.log("highlight mode:")
-			console.log(highlightMode)
+			// console.log("highlight mode:")
+			// console.log(highlightMode)
 			let signsAngleShift = this.ascendant
 			let ctx = this.canvas.getContext('2d');
 			ctx.font = '40px serif';
@@ -365,10 +386,10 @@ class Natal{
 			
 			
 			//bonds between celestial bodies
-			if(highlightMode){
-				console.log("HIGHTLIGHED MODE ON")
-				console.log(this.highlightedBonds)
-			}
+			// if(highlightMode){
+			// 	console.log("HIGHTLIGHED MODE ON")
+			// 	console.log(this.highlightedBonds)
+			// }
 			
 			this.bonds.forEach((bond) => {
 				if (highlightMode){
@@ -428,6 +449,7 @@ class Natal{
 			let payload = {}
 			payload.bondsString = this.getBondsString()
 			payload.celBodyString = this.getCelBodyCoordString()
+			payload.ascendantString = this.getAscendantString()
 			callback(payload)
 		}
 	}
@@ -446,6 +468,7 @@ let latPicker = document.getElementById("latPicker")
 let btnGo = document.getElementById("btnDraw")
 let bondsOutput = document.getElementById("bondsOutput")
 let celBodyOutput = document.getElementById("celBodyAnglesOutput")
+let ascendantOutput = document.getElementById("ascendantOutput")
 let canvas = document.getElementById('canvas');
 
 
@@ -462,6 +485,7 @@ function draw(){
 	natal.addOutputAuxDataCallback((payload) => {
 		bondsOutput.innerHTML = payload.bondsString
 		celBodyOutput.innerHTML = payload.celBodyString
+		ascendantOutput.innerHTML = payload.ascendantString
 	})
 	natal.draw(date, long, lat)
 	
@@ -473,15 +497,15 @@ btnGo.onclick = () => {
 draw()
 
 //for debug
-let slider = document.getElementById("myRange");
-let sliderOutput = document.getElementById("myRangeOutput");
-sliderOutput.innerHTML = slider.value; // Display the default slider value
+// let slider = document.getElementById("myRange");
+// let sliderOutput = document.getElementById("myRangeOutput");
+// sliderOutput.innerHTML = slider.value; // Display the default slider value
 
-//Update the current slider value (each time you drag the slider handle)
-slider.oninput = function(){
-	sliderOutput.innerHTML = this.value;
-	natal.forceSetAscendantAngle(this.value)
-}
+// //Update the current slider value (each time you drag the slider handle)
+// slider.oninput = function(){
+// 	sliderOutput.innerHTML = this.value;
+// 	natal.forceSetAscendantAngle(this.value)
+// }
 
 let epsilonPicker = document.getElementById("epsilonPicker")
 
@@ -490,7 +514,7 @@ epsilonPicker.oninput = function(){
 }
 
 bondsOutput.onmouseover = function(event){
-	console.log(event.target)
+	//console.log(event.target)
 	event.target.style.color = "orange";
 	natal.setHighlightedBonds([event.target.dataset.id])
 	// setTimeout(function() {

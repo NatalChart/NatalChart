@@ -8,6 +8,15 @@ html {
   box-sizing: inherit;
 }
 
+#canvas-container {
+  width: 100%;
+  text-align:center;
+}
+
+canvas {
+  display: inline;
+}
+
 .container{
   width: 100%;
 }
@@ -23,7 +32,7 @@ html {
 }
 
 .controls{
-  float: center;
+  text-align:center
 }
 
 
