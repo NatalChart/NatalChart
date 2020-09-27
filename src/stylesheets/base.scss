@@ -8,8 +8,27 @@ html {
   box-sizing: inherit;
 }
 
+.container{
+  width: 100%;
+}
+
+.leftContainer{
+  float: left;
+  width: 50%;
+}
+
+.rightContainer{
+  float: right;
+  width: 50%;
+}
+
+.controls{
+  float: center;
+}
+
+
 body {
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.856);
   font-family: Roboto, sans-serif;
   line-height: 1.4;
 }

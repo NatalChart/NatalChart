@@ -1,4 +1,4 @@
-export var signs_symbols = [
+export var signsSymbols = [
 	"♈︎", // aries        // овен
 	"♉︎", // taurus       // телец
 	"♊︎", // gemini       // близнецы
@@ -13,7 +13,7 @@ export var signs_symbols = [
 	"♓︎"   // pisces       // рыбы
 ]
 
-export var celestial_body_names = [
+export var celestialBodyNames = [
 	'sun',
 	'moon',
 	'mercury',
@@ -26,7 +26,7 @@ export var celestial_body_names = [
 	'pluto'
 ]
 
-export var celestial_body_symbols = [
+export var celestialBodySymbols = [
 	"☉", //sun
 	"☽", //moon
 	"☿", //mercury

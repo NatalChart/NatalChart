@@ -6,29 +6,29 @@ import '../stylesheets/style.scss';
 // console.log('Hello!');
 
 import Ephemeris from './ephemeris/Ephemeris'
-import {signs_symbols, 
-	celestial_body_names, 
-	celestial_body_symbols,
+import {signsSymbols as signsSymbols, 
+	celestialBodyNames, 
+	celestialBodySymbols as celestialBodySymbols,
 	bondTypesToAngles,
 	bondTypesToColors,
 	bondTypesToLineStyle} 
-	from './util_data'
+	from './utilityData'
 
 console.log("Hello, za world!")
 
 
 // function moveToCircleAngle(ctx, radius, angle){
-// 	let angle_fix = angle + Math.PI / 2 
-// 	ctx.moveTo(radius * Math.sin(angle_fix), radius * Math.cos(angle_fix))
+// 	let angleFix = angle + Math.PI / 2 
+// 	ctx.moveTo(radius * Math.sin(angleFix), radius * Math.cos(angleFix))
 // }
 
 const centerX = 305
 const centerY = 305
-const circle_house_outer_radius = 300
-const circle_house_inner_radius = 275
-const circle_sign_outer_radius = 275
-const circle_sign_inner_radius = 250
-const circle_planets_radius = 215
+const circleHouseOuterRadius = 300
+const circleHouseInnerRadius = 275
+const circleSignOuterRadius = 275
+const circleSignInnerRadius = 250
+const circlePlanetsRadius = 215
 
 const axialTilt = 23.4392911
 const grad = Math.PI / 180
@@ -42,20 +42,22 @@ class Natal{
 		this.canvas = canvas
 		this.epsilon = 3.0 //default degree
 		
-		this.zero_shift_angle = 90
+		this.zeroShiftAngle = 90
 
 		
-		this.celestial_body_angles = []
+		this.celestialBodyAngles = []
 		this.ascendant = 0
 		this.MC = 0 // Medium Coeli
 		this.LST = 0 // Local Sidereal Time
-		this.observer_longitude = 0
-		this.observer_latitude = 0
+		this.ephemeris = null
+		this.observerLongitude = 0
+		this.observerLatitude = 0
 		this.long = 0
 		this.lat = 0
 		this.bonds = []
-		//DEBUG
-		this.highlighted_bonds = []
+		this.highlightedBonds = []
+		this.highlightedPlanets = []
+		this.outputAuxDataCallback = null
 	}
 
 	setEpsilon(val){
@@ -69,21 +71,39 @@ class Natal{
 		}
 		this.makeBonds()
 		this.render()
+		this.outputAuxDataCallback()
 	}
 
 	//input - array of bond ids
-	setHighlightedBonds(bond_ids){
-		this.highlighted_bonds = new Set()
-		bond_ids.forEach((bond_id) => {
-			this.highlighted_bonds.add(bond_id)
+	setHighlightedBonds(bondIds){
+		console.log("DEBUG")
+		console.log(bondIds)
+		this.highlightedBonds = new Set()
+		bondIds.forEach((bondId) => {
+			this.highlightedBonds.add(parseInt(bondId))
 		})
-		this.bonds.forEach(() => {
-
+		this.highlightedPlanets = new Set()
+		this.highlightedBonds.forEach((bondId) => {
+			this.highlightedPlanets.add(this.bonds[bondId].from)
+			this.highlightedPlanets.add(this.bonds[bondId].to)
 		})
+		console.log(this.highlightedBonds)
+		console.log(this.highlightedPlanets)
+		this.render()
 	}
 
-	//override ascendant_angle
-	forseSetAscendantAngle(val){
+	clearHighlights(){
+		this.highlightedBonds = []
+		this.highlightedPlanets = []
+		this.render()
+	}
+
+	//TODO
+	// setHighlightedPlanets(){
+	// }
+
+	//override ascendantAngle
+	forceSetAscendantAngle(val){
 		this.ascendant = val
 		this.render()
 	}
@@ -94,12 +114,12 @@ class Natal{
 
 	makeBonds(){
 		this.bonds = []
-		let lenght = this.celestial_body_angles.length
-		let bond_id = 0
+		let lenght = this.celestialBodyAngles.length
+		let bondId = 0
 		for (let i = 0; i < lenght - 1; i++) {
 			for (let j = i + 1; j < lenght; j++){
-				let diff = Math.abs(this.celestial_body_angles[i] - this.celestial_body_angles[j])
-				bond_id += this.checkBond(this.bonds, i, j, diff, bond_id)
+				let diff = Math.abs(this.celestialBodyAngles[i] - this.celestialBodyAngles[j])
+				bondId += this.checkBond(this.bonds, i, j, diff, bondId)
 			}
 		}
 		console.log("Bonds: ")
@@ -107,26 +127,45 @@ class Natal{
 		console.log("Total bonds found: " + this.bonds.length)
 	}
 
-	checkBond(bonds, i, j, diff, bond_id){
-		let found_bond_type = null 
+	checkBond(bonds, i, j, diff, bondId){
+		let foundBondType = null 
 		for(let bond in bondTypesToAngles){
 			if (this.withinEpsilon(diff, bondTypesToAngles[bond])){
-				found_bond_type = bond
+				foundBondType = bond
 			}
 		}
-		if (found_bond_type){
-			console.log(`bond: from ${celestial_body_symbols[i]} to ${celestial_body_symbols[j]}`)
-			console.log('bond type: ' + found_bond_type + " angle diff: " + diff)
+		if (foundBondType){
+			console.log(`bond: from ${celestialBodySymbols[i]} to ${celestialBodySymbols[j]}`)
+			console.log('bond type: ' + foundBondType + " angle diff: " + diff)
 			bonds.push({
-				id: bond_id,
+				id: bondId,
 				from: i,
 				to: j,
-				type: found_bond_type,
-				angle_diff: diff
+				type: foundBondType,
+				angleDiff: diff
 			})
 			return 1
 		}
 		return 0
+	}
+
+	getBondsString(){
+		let tmp = []
+		this.bonds.forEach((bond) => {
+			tmp.push(`<div data-id="${bond.id}">${bond.type} ${celestialBodySymbols[bond.from]} to ${celestialBodySymbols[bond.to]} ${Number.parseFloat(bond.angleDiff).toFixed(3)}°</div>`)
+		})
+		if(tmp.length == 0){
+			tmp.push("<div>NONE FOUND</div>")
+		}
+		return tmp.join("")
+	}
+
+	getCelBodyCoordString(){
+		let tmp = []
+		this.ephemeris.Results.forEach((celBody, i) => {
+			tmp.push(`<div>${celestialBodySymbols[i]} ${celBody.key}: ${celBody.position.apparentLongitude30String}</div>`)
+		})
+		return tmp.join("")
 	}
 
 	draw(date, long, lat, epsilon = NaN){
@@ -137,20 +176,21 @@ class Natal{
 		this.long = long
 		this.lat = lat
 		this.calculateEphemerisData(date, long, lat)
-		this.LST = this.calculateLST(date, this.observer_longitude)
+		this.LST = this.calculateLST(date, this.observerLongitude)
 		//this.LST = 17.87
 		this.MC = this.calculateMediumCoeli(this.LST)
-		this.ascendant = this.calculateAsc(this.LST, this.MC, this.observer_latitude)
+		this.ascendant = this.calculateAsc(this.LST, this.MC, this.observerLatitude)
 		this.makeBonds()
 		if (epsilon){
 			this.setEpsilon(epsilon)
 		}else{
 			this.render()
 		}
+		this.outputAuxDataCallback()
 	}
 
 	calculateEphemerisData(date, long, lat){
-		const ephemeris = new Ephemeris({
+		this.ephemeris = new Ephemeris({
 			year: date.getFullYear(), 
 			month: date.getMonth(), 
 			day: date.getDate(), 
@@ -158,19 +198,20 @@ class Natal{
 			minutes: date.getMinutes(), 
 			latitude: lat, 
 			longitude: long, 
-			calculateShadows: false
+			calculateShadows: false,
+			key: ["sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto"]
 		})
-		console.log(ephemeris.Earth)
-		console.log(ephemeris.Observer)
-		console.log(ephemeris.Results)
-		this.celestial_body_angles = []
-		celestial_body_names.forEach((item)=>{
+		console.log(this.ephemeris.Earth)
+		console.log(this.ephemeris.Observer)
+		console.log(this.ephemeris.Results)
+		this.celestialBodyAngles = []
+		celestialBodyNames.forEach((item)=>{
 			//console.log(ephemeris[item])
 			//console.log(ephemeris[item].position.apparentLongitude)
-			this.celestial_body_angles.push(ephemeris[item].position.apparentLongitude)
+			this.celestialBodyAngles.push(this.ephemeris[item].position.apparentLongitude)
 		})
-		this.observer_latitude = ephemeris.Observer.latitude
-		this.observer_longitude = ephemeris.Observer.longitude
+		this.observerLatitude = this.ephemeris.Observer.latitude
+		this.observerLongitude = this.ephemeris.Observer.longitude
 	}
 
 	//LST = local sidereal time
@@ -245,8 +286,10 @@ class Natal{
 
 	render() {
 		if (this.canvas.getContext) {
-			let highlight_mode = this.highlighted_bonds.length > 0
-			let signs_angle_shift = this.ascendant
+			let highlightMode = this.highlightedBonds.size > 0
+			console.log("highlight mode:")
+			console.log(highlightMode)
+			let signsAngleShift = this.ascendant
 			let ctx = this.canvas.getContext('2d');
 			ctx.font = '40px serif';
 			//ctx.webkitImageSmoothingEnabled=true;
@@ -264,77 +307,86 @@ class Natal{
 			ctx.font = '20px serif';
 			for(let i = 0; i < 12; i++){
 				let angle = -(30 * i * grad) + Math.PI / 2
-				ctx.moveTo(circle_house_inner_radius * Math.sin(angle), circle_house_inner_radius * Math.cos(angle))
-				ctx.arc(0, 0, circle_house_inner_radius, 30 * i * grad, 30 * (i + 1) * grad, false);
-				ctx.lineTo(circle_house_outer_radius * Math.sin(angle - 30 * grad), circle_house_outer_radius * Math.cos(angle - 30 * grad))
-				let house_numb = ((i+2)%12)+1
-				let left_shift = null
-				if (house_numb > 9){
-					left_shift = 15
+				ctx.moveTo(circleHouseInnerRadius * Math.sin(angle), circleHouseInnerRadius * Math.cos(angle))
+				ctx.arc(0, 0, circleHouseInnerRadius, 30 * i * grad, 30 * (i + 1) * grad, false);
+				ctx.lineTo(circleHouseOuterRadius * Math.sin(angle - 30 * grad), circleHouseOuterRadius * Math.cos(angle - 30 * grad))
+				let houseNumb = ((i+2)%12)+1
+				let leftShift = null
+				if (houseNumb > 9){
+					leftShift = 15
 				}else{
-					left_shift = 7
+					leftShift = 7
 				}
 	
-				ctx.fillText(`${house_numb}`, 
-				circle_house_inner_radius * 1.05 * Math.sin(((30 * i) - 15) * grad) - left_shift, 
-				circle_house_inner_radius * 1.05 * Math.cos(((30 * i) - 15) * grad) + 5)
-				ctx.moveTo(circle_house_outer_radius, 0);
+				ctx.fillText(`${houseNumb}`, 
+				circleHouseInnerRadius * 1.05 * Math.sin(((30 * i) - 15) * grad) - leftShift, 
+				circleHouseInnerRadius * 1.05 * Math.cos(((30 * i) - 15) * grad) + 5)
+				ctx.moveTo(circleHouseOuterRadius, 0);
 			}
 	
 			//planets and stuff
 			ctx.font = '25px serif';
-			ctx.moveTo(circle_planets_radius, 0);
-			ctx.arc(0, 0, circle_planets_radius, 360 * grad, 0, false);
+			ctx.moveTo(circlePlanetsRadius, 0);
+			ctx.arc(0, 0, circlePlanetsRadius, 360 * grad, 0, false);
 	
 			//probably should move this to consts
-			const radius_for_cel_bodies = (circle_sign_inner_radius - circle_planets_radius) / 2 + circle_planets_radius
-			
-			//figure out which planets need to be highlighted
-			//TODO move this to setHighlighedBonds
-			//OR add setHightLightedPlanets and make a method to create one from the other
-			let highlighted_planets = []
-			// if(highlight_mode){
+			const radiusForCelBodies = (circleSignInnerRadius - circlePlanetsRadius) / 2 + circlePlanetsRadius
 
-			// }
-
-			let cel_bod_coords = []
+			let celBodyCoords = []
 			for (let i = 0; i < 11; i++){
-				let angle = (this.celestial_body_angles[i] - this.zero_shift_angle - signs_angle_shift) * grad
-				let x = circle_planets_radius * Math.sin(angle)
-				let y = circle_planets_radius * Math.cos(angle)
-				cel_bod_coords.push({
+
+				let angle = (this.celestialBodyAngles[i] - this.zeroShiftAngle - signsAngleShift) * grad
+				let x = circlePlanetsRadius * Math.sin(angle)
+				let y = circlePlanetsRadius * Math.cos(angle)
+				celBodyCoords.push({
 					x: x,
 					y: y
 				})
 				ctx.moveTo(x, y)
 				ctx.arc(x,y,2,0, Math.PI * 2, true)
 	
-				ctx.fillText(celestial_body_symbols[i], 
-					radius_for_cel_bodies * Math.sin((this.celestial_body_angles[i] - this.zero_shift_angle - signs_angle_shift) * grad) - 10,
-					radius_for_cel_bodies * Math.cos((this.celestial_body_angles[i] - this.zero_shift_angle - signs_angle_shift) * grad) + 10)
+				if (highlightMode){
+					if(this.highlightedPlanets.has(i)){
+						ctx.globalAlpha = 1
+						ctx.arc(x,y,5,0, Math.PI * 2, true)
+					}else{
+						ctx.globalAlpha = 0.05
+					}
+				}
+				ctx.fillText(celestialBodySymbols[i], 
+					radiusForCelBodies * Math.sin((this.celestialBodyAngles[i] - this.zeroShiftAngle - signsAngleShift) * grad) - 10,
+					radiusForCelBodies * Math.cos((this.celestialBodyAngles[i] - this.zeroShiftAngle - signsAngleShift) * grad) + 10)
+				if (highlightMode){
+					ctx.globalAlpha = 1
+				}
 			}
 			ctx.stroke()
 			ctx.closePath()
 			
 			
 			//bonds between celestial bodies
+			if(highlightMode){
+				console.log("HIGHTLIGHED MODE ON")
+				console.log(this.highlightedBonds)
+			}
+			
 			this.bonds.forEach((bond) => {
-				if (highlight_mode){
-					if(this.highlighted_bonds.includes(bond.id)){
+				if (highlightMode){
+					if(this.highlightedBonds.has(bond.id)){
 						ctx.globalAlpha = 1
 					}else{
-						ctx.globalAlpha = 0.1
+						ctx.globalAlpha = 0.05
 					}
 				}
 				ctx.beginPath()
 				ctx.strokeStyle = bondTypesToColors[bond.type]
 				ctx.setLineDash(bondTypesToLineStyle[bond.type])
-				ctx.moveTo(cel_bod_coords[bond.from].x, cel_bod_coords[bond.from].y)
-				ctx.lineTo(cel_bod_coords[bond.to].x, cel_bod_coords[bond.to].y)
+				ctx.moveTo(celBodyCoords[bond.from].x, celBodyCoords[bond.from].y)
+				ctx.lineTo(celBodyCoords[bond.to].x, celBodyCoords[bond.to].y)
 				ctx.stroke()
 				ctx.closePath()
 			})
-			if(highlight_mode){
+			if(highlightMode){
 				ctx.globalAlpha = 1
 			}
 			ctx.beginPath()
@@ -344,29 +396,45 @@ class Natal{
 			ctx.font = '20px serif';
 	
 			for(let i = 0; i < 12; i += 1){
-				ctx.fillText(signs_symbols[i],
-				circle_sign_inner_radius * 1.05 * Math.sin(((30 * (i - 3)) - signs_angle_shift + 15) * grad) - 10,
-				circle_sign_inner_radius * 1.05 * Math.cos(((30 * (i - 3)) - signs_angle_shift + 15) * grad) + 7)
+				ctx.fillText(signsSymbols[i],
+				circleSignInnerRadius * 1.05 * Math.sin(((30 * (i - 3)) - signsAngleShift + 15) * grad) - 10,
+				circleSignInnerRadius * 1.05 * Math.cos(((30 * (i - 3)) - signsAngleShift + 15) * grad) + 7)
 			}
 			ctx.save();
-			ctx.rotate(signs_angle_shift * grad);
-			let tick_lenght = 5
+			ctx.rotate(signsAngleShift * grad);
+			let tickLenght = 5
 			for(let i = 0; i < 12; i++){
 				let angle = -(30 * i * grad) + Math.PI / 2
-				ctx.moveTo(circle_sign_inner_radius * Math.sin(angle), circle_sign_inner_radius * Math.cos(angle))
-				ctx.arc(0, 0, circle_sign_inner_radius, 30 * i * grad, 30 * (i + 1) * grad, false);
-				ctx.lineTo(circle_sign_outer_radius * Math.sin(angle - 30 * grad), circle_sign_outer_radius * Math.cos(angle - 30 * grad))
+				ctx.moveTo(circleSignInnerRadius * Math.sin(angle), circleSignInnerRadius * Math.cos(angle))
+				ctx.arc(0, 0, circleSignInnerRadius, 30 * i * grad, 30 * (i + 1) * grad, false);
+				ctx.lineTo(circleSignOuterRadius * Math.sin(angle - 30 * grad), circleSignOuterRadius * Math.cos(angle - 30 * grad))
 				for(let j = 0; j < 6; j++){
 					let newAngle = angle - (5 * (j+1) * grad)
-					ctx.moveTo(circle_sign_inner_radius * Math.sin(newAngle), 
-						circle_sign_inner_radius * Math.cos(newAngle))
-					ctx.lineTo((circle_sign_inner_radius - tick_lenght) * Math.sin(newAngle),
-						(circle_sign_inner_radius - tick_lenght)  * Math.cos(newAngle))
+					ctx.moveTo(circleSignInnerRadius * Math.sin(newAngle), 
+						circleSignInnerRadius * Math.cos(newAngle))
+					ctx.lineTo((circleSignInnerRadius - tickLenght) * Math.sin(newAngle),
+						(circleSignInnerRadius - tickLenght)  * Math.cos(newAngle))
 				}
 			}
 			ctx.restore();			
 			ctx.stroke();
 			console.log("Render done.")
+		}
+	}
+
+	//callback to output auxiliary data to whatever interface elements you want
+	addOutputAuxDataCallback(callback){
+		this.outputAuxDataCallback = () => {
+			let payload = {}
+			payload.bondsString = this.getBondsString()
+			payload.celBodyString = this.getCelBodyCoordString()
+			callback(payload)
+		}
+	}
+
+	forceOutputAuxData(){
+		if(this.outputAuxDataCallback){
+			this.outputAuxDataCallback()
 		}
 	}
 }
@@ -376,79 +444,66 @@ let timePicker = document.getElementById("timePicker")
 let longPicker = document.getElementById("longPicker")
 let latPicker = document.getElementById("latPicker")
 let btnGo = document.getElementById("btnDraw")
+let bondsOutput = document.getElementById("bondsOutput")
+let celBodyOutput = document.getElementById("celBodyAnglesOutput")
 let canvas = document.getElementById('canvas');
+
 
 let natal = new Natal(canvas)
 
-// function startDrawing(){
-// 	let date_raw = dataPicker.value
-// 	let time_raw = timePicker.value
-// 	let lat = parseInt(latPicker.value)
-// 	let long = parseInt(longPicker.value)
-// 	console.log(date_raw)
-// 	console.log(time_raw)
-// 	console.log(date_raw + " " + time_raw)
-// 	let date = new Date(date_raw + " " + time_raw)
-// 	console.log(date)
-// 	const ephemeris = new Ephemeris({
-// 		year: date.getFullYear(), month: date.getMonth(), day: date.getDate(), hours: date.getHours(), minutes: date.getMinutes(), latitude: lat, longitude: long, calculateShadows: false
-// 	})
-// 	console.log(ephemeris.Earth)
-// 	console.log(ephemeris.Observer)
-// 	console.log(ephemeris.Results)
-// 	let body_angles = []
-// 	celestial_body_names.forEach((item)=>{
-// 		//console.log(ephemeris[item])
-// 		//console.log(ephemeris[item].position.apparentLongitude)
-// 		body_angles.push(ephemeris[item].position.apparentLongitude)
-// 	})
-// 	let ascendant = calculateAsc(date, ephemeris.Observer.latitude, ephemeris.Observer.longitude)
-// 	natal.draw(body_angles, ascendant)
-// }
-// //ephemeris.Results 
 
 function draw(){
-	let date_raw = dataPicker.value
-	let time_raw = timePicker.value
+	let dateRaw = dataPicker.value
+	let timeRaw = timePicker.value
 	let lat = parseInt(latPicker.value)
 	let long = parseInt(longPicker.value)
-	console.log(date_raw)
-	console.log(time_raw)
-	console.log(date_raw + " " + time_raw)
-	let date = new Date(date_raw + " " + time_raw)
+	let date = new Date(dateRaw + " " + timeRaw)
 	console.log(date)
+	natal.addOutputAuxDataCallback((payload) => {
+		bondsOutput.innerHTML = payload.bondsString
+		celBodyOutput.innerHTML = payload.celBodyString
+	})
 	natal.draw(date, long, lat)
+	
 }
 
 btnGo.onclick = () => {
-
 	draw()
-	// let date_raw = dataPicker.value
-	// console.log(date_raw)
-	// let date = new Date(date_raw)
-	// console.log(date)
-	// console.log(date.getFullYear())
-	// console.log(date.getMonth())
-	// console.log(date.getDate())
-	// 
 }
 draw()
 
 //for debug
 let slider = document.getElementById("myRange");
-let slider_output = document.getElementById("myRange_output");
-slider_output.innerHTML = slider.value; // Display the default slider value
+let sliderOutput = document.getElementById("myRangeOutput");
+sliderOutput.innerHTML = slider.value; // Display the default slider value
 
 //Update the current slider value (each time you drag the slider handle)
 slider.oninput = function(){
-	slider_output.innerHTML = this.value;
-	natal.forseSetAscendantAngle(this.value)
+	sliderOutput.innerHTML = this.value;
+	natal.forceSetAscendantAngle(this.value)
 }
 
 let epsilonPicker = document.getElementById("epsilonPicker")
 
 epsilonPicker.oninput = function(){
 	natal.setEpsilon(parseInt(this.value))
+}
+
+bondsOutput.onmouseover = function(event){
+	console.log(event.target)
+	event.target.style.color = "orange";
+	natal.setHighlightedBonds([event.target.dataset.id])
+	// setTimeout(function() {
+	// 	event.target.style.color = "";
+	//   }, 500);
+	// setTimeout(function() {
+	// 	natal.clearHighlights()
+	// }, 2000);
+}
+
+bondsOutput.onmouseout = function(event){
+	event.target.style.color = "";
+	natal.clearHighlights()
 }
 
 //TODO add https://leafletjs.com/ map for picking coords
