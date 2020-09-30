@@ -55,7 +55,7 @@ export var celestialBodySymbols = [
 	"☊" //lunar node (ascending)
 ]
 
-export var bondTypesToAngles = {
+export const bondTypesToAngles = {
 	"Opposition" : 180,
 	"Conjunction" : 0,
 	"Trine" : 120,
@@ -64,6 +64,19 @@ export var bondTypesToAngles = {
 	"Quincunx" : 150,
 	"Semisquare" : 45,
 	"Semisextile" : 30
+}
+
+//TODO adjust epsilon values
+export const epsilonTable = {
+	"Opposition" : 4,
+	"Conjunction" : 1,
+	"Trine" : 4,
+	"Square" : 2,
+	"Sextile" : 2,
+	"Quincunx" : 4,
+	"Semisquare" : 2,
+	"Semisextile" : 1
+
 }
 
 export var bondTypesToColors = {

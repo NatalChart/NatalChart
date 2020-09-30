@@ -1,3 +1,4 @@
+
 class Storage{
     constructor(){
         this.ls = localStorage
@@ -10,5 +11,4 @@ class Storage{
     get(name, callback){
         callback(this.ls.name)
     }
-
 }

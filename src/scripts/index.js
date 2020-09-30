@@ -12,7 +12,8 @@ import {signsSymbols,
 	celestialBodySymbols,
 	bondTypesToAngles,
 	bondTypesToColors,
-	bondTypesToLineStyle} 
+	bondTypesToLineStyle,
+	epsilonTable} 
 	from './utilityData'
 
 console.log("Hello, za world!")
@@ -38,10 +39,12 @@ const millisecondsInDay = 86400000
 
 
 
+
+
 class Natal{
 	constructor(canvas){
 		this.canvas = canvas
-		this.epsilon = 3.0 //default degree
+		this.epsilon = 1.0 //default degree
 		
 		this.zeroShiftAngle = 90
 
@@ -109,8 +112,8 @@ class Natal{
 		this.render()
 	}
 
-	withinEpsilon(x, y){
-		return x < y + this.epsilon && x > y - this.epsilon
+	withinEpsilon(x, y, e){
+		return x < y + e && x > y - e
 	}
 
 	makeBonds(){
@@ -140,7 +143,7 @@ class Natal{
 	checkBond(bonds, i, j, diff, bondId){
 		let foundBondType = null 
 		for(let bond in bondTypesToAngles){
-			if (this.withinEpsilon(diff, bondTypesToAngles[bond])){
+			if (this.withinEpsilon(diff, bondTypesToAngles[bond], epsilonTable[bond] + this.epsilon)){
 				foundBondType = bond
 			}
 		}
@@ -182,10 +185,10 @@ class Natal{
 		let tmp = this.ascendant
 		let signN = Math.floor(this.ascendant / 30)
 		let angle = this.ascendant % 30
-		console.log("ASC")
-		console.log(tmp)
-		console.log(signN)
-		console.log(angle)
+		// console.log("ASC")
+		// console.log(tmp)
+		// console.log(signN)
+		// console.log(angle)
 		return `${signsNames[signN]} ${Number.parseFloat(angle).toFixed(3)}°`
 	}
 
@@ -266,7 +269,21 @@ class Natal{
 
 	calculateMediumCoeli(SiderealTime){
 		let ARMC = SiderealTime * 15
-		return Math.atan(Math.sin(ARMC * grad) / Math.cos(ARMC * grad) * Math.cos(axialTilt * grad)) / grad
+		let mc = Math.atan(Math.sin(ARMC * grad) / Math.cos(ARMC * grad) * Math.cos(axialTilt * grad)) / grad
+		while (mc < 0){
+			mc += 360
+		}
+		mc %= 360
+		if(SiderealTime < 180){
+			if(mc > 180){
+				mc -= 180
+			}
+		} else {
+			if (mc < 180){
+				mc += 180
+			}
+		}
+		return mc
 	}
 
 	calculateAsc(LST, MC, lat){
@@ -279,12 +296,12 @@ class Natal{
 		// let x = Math.sin(localSiderealTime * grad) * Math.cos(axialTilt * grad) + Math.tan(lat * grad) * Math.sin(axialTilt * grad)
 		
 		let RAMC = LST * 15
-		console.log("RAMC = " + RAMC)
+		// console.log("RAMC = " + RAMC)
 		let y = Math.cos(RAMC * grad)
 		let x = -(Math.sin(axialTilt * grad) * Math.tan(lat * grad) + Math.cos(axialTilt * grad) * Math.sin(RAMC * grad))
-		console.log(x)
-		console.log(y)
-		console.log(y/x)
+		// console.log(x)
+		// console.log(y)
+		// console.log(y/x)
 		let ascendant = Math.atan(y/x)
 		ascendant = ascendant / grad
 		console.log("Asc: " + ascendant)
@@ -292,13 +309,25 @@ class Natal{
 		//this is needed if atan is used instead of atan2
 		
 		while (ascendant < 0){
-			ascendant = ascendant + 180
+			ascendant += 180
+			console.log("Asc was less than 0. fixin it")
+			console.log("Asc: " + ascendant)
 		}
-		if(ascendant < MC){
-			ascendant = ascendant + 180
+		if (ascendant > 360){
+			ascendant = ascendant % 360
+			console.log("Asc was more than 360. fixin it")
+			console.log("Asc: " + ascendant)
 		}
-		// if (ascendant > 360){
-		// 	ascendant = ascendant % 360
+
+		if(ascendant > MC){
+			ascendant -= 180
+			console.log('ASC more THAN MC')
+			console.log("Asc: " + ascendant)
+		}
+		// if(ascendant > MC + 180){
+		// 	ascendant -= 180
+		// 	console.log('ASC > MC + 180')
+		// 	console.log("Asc: " + ascendant)
 		// }
 	
 		console.log("Asc final: " + ascendant)
@@ -439,7 +468,7 @@ class Natal{
 			}
 			ctx.restore();			
 			ctx.stroke();
-			console.log("Render done.")
+			//console.log("Render done.")
 		}
 	}
 
