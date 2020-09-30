@@ -16,6 +16,7 @@ const circleHouseInnerRadius = 275
 const circleSignOuterRadius = 275
 const circleSignInnerRadius = 250
 const circlePlanetsRadius = 215
+const defaultBaseEpsilon = 0.0
 
 const axialTilt = 23.4392911
 const grad = Math.PI / 180
@@ -25,9 +26,8 @@ const millisecondsInDay = 86400000
 export default class Natal{
 	constructor(canvas){
 		this.canvas = canvas
-		this.epsilon = 1.0 //default degree
-		
-		this.zeroShiftAngle = 90
+		this.epsilon = defaultBaseEpsilon
+        this.zeroShiftAngle = 90
 
 		
 		this.celestialBodyAngles = []
@@ -36,14 +36,20 @@ export default class Natal{
 		this.LST = 0 // Local Sidereal Time
 		this.ephemeris = null
 		this.observerLongitude = 0
-		this.observerLatitude = 0
+        this.observerLatitude = 0
+        this.name = ""
+        this.date = new Date()
 		this.long = 0
 		this.lat = 0
 		this.bonds = []
 		this.highlightedBonds = []
 		this.highlightedPlanets = []
 		this.outputAuxDataCallback = null
-	}
+    }
+    
+    setStorage(storage){
+        this.storage = storage
+    }
 
 	setEpsilon(val){
 		let tmp = Number.isSafeInteger(val) && val >= 0 && val <= 15
@@ -173,13 +179,18 @@ export default class Natal{
 		return `${signsNames[signN]} ${Number.parseFloat(angle).toFixed(3)}°`
 	}
 
-	draw(date, long, lat, epsilon = NaN){
+	draw(name, date, long, lat, epsilon = NaN){
 		//debug:
 		// date = new Date("2016-11-02 21:17:30")
 		// long = 6.9
-		// lat = 52.21
+        // lat = 52.21
+        this.name = name
+        this.date = date
 		this.long = long
-		this.lat = lat
+        this.lat = lat
+        console.log("DEBUG")
+        console.log(long)
+        console.log(lat)
 		this.calculateEphemerisData(date, long, lat)
 		this.LST = this.calculateLST(date, this.observerLongitude)
 		//this.LST = 17.87
@@ -469,6 +480,44 @@ export default class Natal{
 		if(this.outputAuxDataCallback){
 			this.outputAuxDataCallback()
 		}
+    }
+
+    getStorageObj(callback){
+        let obj = {
+            name: this.name,
+            date: this.date,
+            long: this.long,
+            lat: this.lat
+        }
+        callback(obj)
+    }
+
+    loadStorageObj(obj, callback){
+        console.log("LOAD")
+        console.log(obj)
+        let date = new Date(obj.date)
+        this.draw(obj.name, date, obj.long, obj.lat)
+        if(callback){callback()}
+    }
+
+    saveToStorage(callback){
+        if(this.storage){
+            this.getStorageObj((obj) => {
+                this.storage.set(obj.name, obj, callback)
+            })
+        } else {
+            console.error("No storage added to Natal")
+        }
+    }
+
+    loadFromStorage(name, callback){
+        if(this.storage){
+            this.storage.get(name, (obj) => {
+                this.loadStorageObj(obj, callback)
+            })
+        } else {
+            console.error("No storage added to Natal")
+        }
     }
     
     //moveToCircleAngle(ctx, radius, angle){

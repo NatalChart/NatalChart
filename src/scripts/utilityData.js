@@ -68,15 +68,14 @@ export const bondTypesToAngles = {
 
 //TODO adjust epsilon values
 export const epsilonTable = {
-	"Opposition" : 4,
-	"Conjunction" : 1,
-	"Trine" : 4,
-	"Square" : 2,
-	"Sextile" : 2,
+	"Opposition" : 10,
+	"Conjunction" : 3,
+	"Trine" : 10,
+	"Square" : 10,
+	"Sextile" : 8,
 	"Quincunx" : 4,
 	"Semisquare" : 2,
-	"Semisextile" : 1
-
+	"Semisextile" : 4
 }
 
 export var bondTypesToColors = {

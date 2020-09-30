@@ -34,17 +34,19 @@
         <div class="controls">
           <button id="btnDraw">Go!</button>
           <br>
+          <input type="text" id="nameInput" value="Ivan">
+          <br>
           <!-- <input type="date" id="dataPicker" value="1995-08-13">
           <br>
           <input type="time" id="timePicker" value="21:35">
           <br> -->
-          <input type="date" id="dataPicker" value="1994-07-28">
+          <input type="date" id="dataInput" value="1994-07-28">
           <br>
-          <input type="time" id="timePicker" value="17:05">
+          <input type="time" id="timeInput" value="17:05">
           <br>
-          <label>lat</label><input type="number" id="latPicker" value="59.91">
+          <label>lat</label><input type="number" id="latInput" value="59.91">
           <br>
-          <label>long</label><input type="number" id="longPicker" value="30.25">
+          <label>long</label><input type="number" id="longInput" value="30.25">
           <br>
           
           <!-- debug -->
@@ -60,17 +62,21 @@
         <br>
         <label>Ascendant: </label><div id="ascendantOutput"> </div>
         <br>
-        <label>basic epsilon°</label><input type="number" id="epsilonPicker" value="1.0" min="0" max="15" step="0.5">
+        <label>basic epsilon°</label><input type="number" id="epsilonInput" value="0.0" min="0" max="15" step="0.5">
         <div>Bonds found between:</div>
         <div id="bondsOutput"> </div>
       </div>
     </section>
     <br>
+    <h1>SAVE/LOAD</h1>
+    <button id="btnSave">Save</button>
+    <div id="storageList">Storage empty</div>
     <h1>ROADMAP</h1>
     <div>1) storage</div>
     <div>2) fix ascendant</div>
     <div>3) geolocation on map via leafletjs</div>
     <div>4) localization</div>
     <div>5) printable ver</div>
+    <div>6) new GUI</div>
   </body>
 </html>
