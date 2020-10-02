@@ -104,9 +104,7 @@ inputEpsilon.oninput = (event) => {
 		return el.value
 	})
 	let uniformValue = parseFloat(tmp.pop())
-	//console.log(tmp)
 	if(uniformValue > 0){
-		//console.log(Array(tmp.length).fill(uniformValue))
 		natal.setEpsilonTable(Array(tmp.length).fill(uniformValue))
 	} else {
 		natal.setEpsilonTable(tmp.map((e) => {
@@ -118,7 +116,6 @@ inputEpsilon.oninput = (event) => {
 btnResetEps.onclick = (event) => {
 	natal.setEpsilonTableToDefault()
 	let inputNodes = inputEpsilon.getElementsByTagName('INPUT');
-	console.log(inputNodes)
 	for (let el of inputNodes) {
 		let bondName = el.id.slice(7)
 		if(epsilonTable[bondName]){

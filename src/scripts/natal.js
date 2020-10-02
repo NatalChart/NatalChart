@@ -157,13 +157,20 @@ export default class Natal{
 	}
 
 	getBondsString(){
+        //probably can optimize this
 		let tmp = []
 		this.bonds.forEach((bond) => {
 			tmp.push(`<div data-id="${bond.id}">${bond.type} ${celestialBodySymbols[bond.from]} to ${celestialBodySymbols[bond.to]} ${Number.parseFloat(bond.angleDiff).toFixed(3)}°</div>`)
 		})
 		if(tmp.length == 0){
 			tmp.push("<div>NONE FOUND</div>")
-		}
+        }
+        const regex = /<div[^>]+>(.*?)<\/div>/
+        tmp.sort((a,b) => {
+            a = a.match(regex)
+            b = b.match(regex)
+            return a[1].localeCompare(b[1])
+        })
 		return tmp.join("")
 	}
 
