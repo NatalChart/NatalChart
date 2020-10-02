@@ -1,4 +1,4 @@
-export var signsSymbols = [
+export const signsSymbols = [
 	"♈︎", // aries        // овен
 	"♉︎", // taurus       // телец
 	"♊︎", // gemini       // близнецы
@@ -13,7 +13,7 @@ export var signsSymbols = [
 	"♓︎"   // pisces       // рыбы
 ]
 
-export var signsNames = [
+export const signsNames = [
 	"aries",
 	"taurus",
 	"gemini",
@@ -41,7 +41,7 @@ export var celestialBodyNames = [
 	'pluto'
 ]
 
-export var celestialBodySymbols = [
+export const celestialBodySymbols = [
 	"☉", //sun
 	"☽", //moon
 	"☿", //mercury
@@ -67,18 +67,18 @@ export const bondTypesToAngles = {
 }
 
 //TODO adjust epsilon values
-export const epsilonTable = {
-	"Opposition" : 10,
-	"Conjunction" : 3,
-	"Trine" : 10,
-	"Square" : 10,
-	"Sextile" : 8,
-	"Quincunx" : 4,
-	"Semisquare" : 2,
-	"Semisextile" : 4
+export var epsilonTable = {
+	"Opposition" : 10.0,
+	"Conjunction" : 3.0,
+	"Trine" : 10.0,
+	"Square" : 10.0,
+	"Sextile" : 8.0,
+	"Quincunx" : 4.0,
+	"Semisquare" : 2.0,
+	"Semisextile" : 4.0
 }
 
-export var bondTypesToColors = {
+export const bondTypesToColors = {
 	"Opposition" : "black",
 	"Conjunction" : "black",
 	"Trine" : "red",
@@ -89,7 +89,7 @@ export var bondTypesToColors = {
 	"Semisextile" : "blue"
 }
 
-export var bondTypesToLineStyle = {
+export const bondTypesToLineStyle = {
 	"Opposition" : [],
 	"Conjunction" : [],
 	"Trine" : [],

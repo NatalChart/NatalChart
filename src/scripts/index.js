@@ -4,6 +4,7 @@
 import '../stylesheets/style.scss';
 import Natal from './natal'
 import Storage from './storage'
+import {epsilonTable} from './utilityData'
 
 console.log("Hello, za world!")
 
@@ -15,6 +16,7 @@ let inputLat = document.getElementById("latInput")
 let inputEpsilon = document.getElementById("epsilonInput")
 
 let btnGo = document.getElementById("btnDraw")
+let btnResetEps = document.getElementById("btnResetEpsilon")
 let btnSave = document.getElementById("btnSave")
 
 let outputBonds = document.getElementById("bondsOutput")
@@ -30,6 +32,12 @@ let natal = new Natal(canvas)
 let storage = new Storage()
 natal.setStorage(storage)
 
+natal.addOutputAuxDataCallback((payload) => {
+	outputBonds.innerHTML = payload.bondsString
+	outputCelBody.innerHTML = payload.celBodyString
+	outputAscendant.innerHTML = payload.ascendantString
+})
+
 function draw(){
 	let name = inputName.value
 	let dateRaw = dataInput.value
@@ -39,11 +47,6 @@ function draw(){
 	//TO DO make sure date understands that this is UTC
 	let date = new Date(dateRaw + " " + timeRaw)
 	console.log(date)
-	natal.addOutputAuxDataCallback((payload) => {
-		outputBonds.innerHTML = payload.bondsString
-		outputCelBody.innerHTML = payload.celBodyString
-		outputAscendant.innerHTML = payload.ascendantString
-	})
 	natal.draw(name, date, long, lat)
 	
 }
@@ -95,16 +98,43 @@ outputStorageList.onclick = (event) =>{
 }
 
 
-inputEpsilon.oninput = function(){
-	natal.setEpsilon(parseInt(this.value))
+inputEpsilon.oninput = (event) => {
+	let inputNodes = event.currentTarget.getElementsByTagName('INPUT');
+	let tmp = Array.from(inputNodes, (el) => {
+		return el.value
+	})
+	let uniformValue = parseFloat(tmp.pop())
+	//console.log(tmp)
+	if(uniformValue > 0){
+		//console.log(Array(tmp.length).fill(uniformValue))
+		natal.setEpsilonTable(Array(tmp.length).fill(uniformValue))
+	} else {
+		natal.setEpsilonTable(tmp.map((e) => {
+			return parseFloat(e)
+		}))
+	}
 }
 
-outputBonds.onmouseover = function(event){
+btnResetEps.onclick = (event) => {
+	natal.setEpsilonTableToDefault()
+	let inputNodes = inputEpsilon.getElementsByTagName('INPUT');
+	console.log(inputNodes)
+	for (let el of inputNodes) {
+		let bondName = el.id.slice(7)
+		if(epsilonTable[bondName]){
+			el.value = Number.parseFloat(epsilonTable[bondName]).toFixed(1)
+		} else {
+			el.value = Number.parseFloat(0).toFixed(1)
+		}
+	}
+}
+
+outputBonds.onmouseover = (event) => {
 	event.target.style.color = "orange";
 	natal.setHighlightedBonds([event.target.dataset.id])
 }
 
-outputBonds.onmouseout = function(event){
+outputBonds.onmouseout = (event) => {
 	event.target.style.color = "";
 	natal.clearHighlights()
 }

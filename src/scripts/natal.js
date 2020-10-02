@@ -16,7 +16,6 @@ const circleHouseInnerRadius = 275
 const circleSignOuterRadius = 275
 const circleSignInnerRadius = 250
 const circlePlanetsRadius = 215
-const defaultBaseEpsilon = 0.0
 
 const axialTilt = 23.4392911
 const grad = Math.PI / 180
@@ -26,9 +25,8 @@ const millisecondsInDay = 86400000
 export default class Natal{
 	constructor(canvas){
 		this.canvas = canvas
-		this.epsilon = defaultBaseEpsilon
         this.zeroShiftAngle = 90
-
+        this.epsilonTable = epsilonTable
 		
 		this.celestialBodyAngles = []
 		this.ascendant = 0
@@ -51,20 +49,6 @@ export default class Natal{
         this.storage = storage
     }
 
-	setEpsilon(val){
-		let tmp = Number.isSafeInteger(val) && val >= 0 && val <= 15
-		console.assert(tmp)
-		if(tmp){
-			this.epsilon = val
-			console.log("Epsilon set to " + val)
-		} else {
-			this.epsilon = 0
-		}
-		this.makeBonds()
-		this.render()
-		this.outputAuxDataCallback()
-	}
-
 	//input - array of bond ids
 	setHighlightedBonds(bondIds){
 		// console.log("DEBUG")
@@ -81,7 +65,30 @@ export default class Natal{
 		// console.log(this.highlightedBonds)
 		// console.log(this.highlightedPlanets)
 		this.render()
-	}
+    }
+
+    setEpsilonTableToDefault(){
+        this.epsilonTable = epsilonTable
+        this.makeBonds()
+		this.render()
+		this.outputAuxDataCallback()
+    }
+    
+    setEpsilonTable(newEpsilonTable){
+        //console.log("OLD:")
+        //console.log(this.epsilonTable)
+        //console.log(Object.keys(this.epsilonTable))
+
+        //ES6 magic!
+        let newTableAsObj = Object.keys(this.epsilonTable).reduce((obj, key, index) => ({ ...obj, [key]: newEpsilonTable[index] }), {});
+        //console.log (newTableAsObj)
+        this.epsilonTable = newTableAsObj
+        //console.log("NEW:")
+        //console.log(this.epsilonTable)
+        this.makeBonds()
+		this.render()
+		this.outputAuxDataCallback()
+    }
 
 	clearHighlights(){
 		this.highlightedBonds = []
@@ -122,21 +129,21 @@ export default class Natal{
 				// console.log(tmp)
 			}
 		}
-		console.log("Bonds: ")
-		console.log(this.bonds)
-		console.log("Total bonds found: " + this.bonds.length)
+		// console.log("Bonds: ")
+		// console.log(this.bonds)
+		// console.log("Total bonds found: " + this.bonds.length)
 	}
 
 	checkBond(bonds, i, j, diff, bondId){
 		let foundBondType = null 
 		for(let bond in bondTypesToAngles){
-			if (this.withinEpsilon(diff, bondTypesToAngles[bond], epsilonTable[bond] + this.epsilon)){
+			if (this.withinEpsilon(diff, bondTypesToAngles[bond], this.epsilonTable[bond])){
 				foundBondType = bond
 			}
 		}
 		if (foundBondType){
-			console.log(`bond: from ${celestialBodySymbols[i]} to ${celestialBodySymbols[j]}`)
-			console.log('bond type: ' + foundBondType + " angle diff: " + diff)
+			// console.log(`bond: from ${celestialBodySymbols[i]} to ${celestialBodySymbols[j]}`)
+			// console.log('bond type: ' + foundBondType + " angle diff: " + diff)
 			bonds.push({
 				id: bondId,
 				from: i,
@@ -179,7 +186,7 @@ export default class Natal{
 		return `${signsNames[signN]} ${Number.parseFloat(angle).toFixed(3)}°`
 	}
 
-	draw(name, date, long, lat, epsilon = NaN){
+	draw(name, date, long, lat){
 		//debug:
 		// date = new Date("2016-11-02 21:17:30")
 		// long = 6.9
@@ -197,11 +204,7 @@ export default class Natal{
 		this.MC = this.calculateMediumCoeli(this.LST)
 		this.ascendant = this.calculateAsc(this.LST, this.MC, this.observerLatitude)
 		this.makeBonds()
-		if (epsilon){
-			this.setEpsilon(epsilon)
-		}else{
-			this.render()
-		}
+		this.render()
 		this.outputAuxDataCallback()
 	}
 
