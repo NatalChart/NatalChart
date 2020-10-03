@@ -31,19 +31,15 @@
           <div class="controls" style='text-align: right;'>
             <button id="btnDraw">Go!</button>
             <br>
-            <input type="text" id="nameInput" value="Ivan">
+            <input type="text" id="nameInput" value="">
             <br>
-            <!-- <input type="date" id="dataPicker" value="1995-08-13">
+            <input type="date" id="dataInput" value="">
             <br>
-            <input type="time" id="timePicker" value="21:35">
-            <br> -->
-            <input type="date" id="dataInput" value="1994-07-28">
+            (must be in UTC)<input type="time" id="timeInput" value="">
             <br>
-            (must be in UTC)<input type="time" id="timeInput" value="17:05">
+            <label>lat </label><input type="number" id="latInput" value="0.0">
             <br>
-            <label>lat </label><input type="number" id="latInput" value="59.91">
-            <br>
-            <label>long </label><input type="number" id="longInput" value="30.25">
+            <label>long </label><input type="number" id="longInput" value="0.0">
             <br>
             <br>
           
@@ -87,6 +83,7 @@
     <ol>
       <!-- <li>fix ascendant</li> -->
       <li>geolocation on map via leafletjs </li>
+      <li>time input based on geolocation OR utc</li>
       <li>sec progression</li>
       <li>share via URL</li>
       <li>localization</li>

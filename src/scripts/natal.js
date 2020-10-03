@@ -528,9 +528,13 @@ export default class Natal{
 
     saveToStorage(callback){
         if(this.storage){
-            this.getStorageObj((obj) => {
-                this.storage.set(obj.name, obj, callback)
-            })
+            if(this.name != ""){
+                this.getStorageObj((obj) => {
+                    this.storage.set(obj.name, obj, callback)
+                })
+            } else {
+                console.error("Chart name not defined")
+            }
         } else {
             console.error("No storage added to Natal")
         }

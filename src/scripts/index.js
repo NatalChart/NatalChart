@@ -48,7 +48,22 @@ function draw(){
 	let date = new Date(dateRaw + " " + timeRaw)
 	console.log(date)
 	natal.draw(name, date, long, lat)
-	
+}
+
+function dateToView(date){
+	let payload = {}
+	payload.time = date.toLocaleTimeString()
+	payload.date = date.toISOString().slice(0,10)
+	return payload		
+}
+
+function fillControls(obj){
+	let dt = dateToView(obj.date)
+	inputName.value = obj.name
+	inputTime.value = dt.time
+	inputDate.value = dt.date
+	inputLat.value = obj.lat
+	inputLong.value = obj.long
 }
 
 function displayStorageList(){
@@ -84,14 +99,14 @@ outputStorageList.onclick = (event) =>{
 		natal.loadFromStorage(name, () => {
 			//fill text fields and stuff
 			natal.getStorageObj((obj) => {
-				let dt = new Date(obj.date)
-				console.log(dt.toISOString().slice(0,10))
-				console.log(dt.toLocaleTimeString())
-				inputName.value = obj.name
-				inputTime.value = dt.toLocaleTimeString()//dt.getHours() + ":" + dt.getFullMinutes()
-				inputDate.value = dt.toISOString().slice(0,10) //dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate()
-				inputLat.value = obj.lat
-				inputLong.value = obj.long
+				obj.date = new Date(obj.date)
+				fillControls(obj)
+				// let dt = dateToView(Date(obj.date))
+				// inputName.value = obj.name
+				// inputTime.value = dt.time//dt.getHours() + ":" + dt.getFullMinutes()
+				// inputDate.value = dt.date //dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate()
+				// inputLat.value = obj.lat
+				// inputLong.value = obj.long
 			})
 		})
 	}
@@ -151,10 +166,16 @@ outputBonds.onmouseout = (event) => {
 
 window.onload = () => {
 	console.log("page loaded")
+	let currentDate = new Date();
+	console.log(currentDate)
+	fillControls({
+		name: "",
+		date: currentDate,
+		lat: "0.0",
+		long: "0.0"
+	})
 	draw()
 	displayStorageList()
 }
-
-
 
 //TODO add https://leafletjs.com/ map for picking coords
