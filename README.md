@@ -1,6 +1,5 @@
-# Webpack ES6+ Sass Boilerplate [![devDependency Status](https://david-dm.org/vadimmarkov/webpack-es6-sass-boilerplate/dev-status.svg)](https://david-dm.org/vadimmarkov/webpack-es6-sass-boilerplate/?type=dev) [![Known Vulnerabilities](https://snyk.io/test/github/vadimmarkov/webpack-es6-sass-boilerplate/badge.svg)](https://snyk.io//test/github/vadimmarkov/webpack-es6-sass-boilerplate)
+# Open source natal chart
 
-A minimalistic webpack 4 based boilerplate for building web apps.
 
 ## What’s included?
 
@@ -21,6 +20,12 @@ A minimalistic webpack 4 based boilerplate for building web apps.
 - run `npm run start` to start the [webpack-dev-server](https://github.com/webpack/webpack-dev-server) (`localhost:8080` will be opened automatically)
 - start developing
 - when you are done, run `npm run build` to get the production version of your app
+
+## Uses:
+web app based on a boilerplate:
+https://github.com/vadimmarkov/webpack-es6-sass-boilerplate
+moshier ephemeris implementation:
+https://github.com/0xStarcat/Moshier-Ephemeris-JS
 
 ## Commands
 

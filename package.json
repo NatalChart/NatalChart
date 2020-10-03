@@ -1,12 +1,12 @@
 {
   "name": "natal_proj",
   "version": "0.2.0",
-  "description": "A minimalistic webpack 4 based boilerplate for building web apps",
-  "author": "Ivan Dzyubenko",
+  "description": "Open source natal chart wep app",
+  "author": "Vorok",
   "license": "GPTv3",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vadimmarkov/webpack-es6-sass-boilerplate.git"
+    "url": "https://github.com/Vorok/natal_project"
   },
   "scripts": {
     "prestart": "rimraf build && rimraf ./stats.json",
