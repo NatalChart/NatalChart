@@ -183,14 +183,15 @@ export default class Natal{
 	}
 
 	getAscendantString(){
-		let tmp = this.ascendant
 		let signN = Math.floor(this.ascendant / 30)
 		let angle = this.ascendant % 30
 		// console.log("ASC")
 		// console.log(tmp)
 		// console.log(signN)
 		// console.log(angle)
-		return `${signsNames[signN]} ${Number.parseFloat(angle).toFixed(3)}°`
+        return `<div>${signsNames[signN]} ${Number.parseFloat(angle).toFixed(3)}° </div><br>`
+        // <div>LST: ${this.LST}</div><br>
+        // <div>MC: ${this.MC}</div`
 	}
 
 	draw(name, date, long, lat){
@@ -254,9 +255,10 @@ export default class Natal{
 		//console.log(ST0)
 		ST0 = ST0 % 360
 		//console.log(ST0)
-		if (ST0 < 0){
-			ST0 = ST0 + 360
-		}
+		while (ST0 < 0){
+			ST0 += 360
+        }
+        ST0 %= 360
 		//console.log(ST0)
 		ST0 = ST0 / 15
 		//console.log(ST0)
@@ -271,20 +273,23 @@ export default class Natal{
 
 	calculateMediumCoeli(SiderealTime){
 		let ARMC = SiderealTime * 15
-		let mc = Math.atan(Math.sin(ARMC * grad) / Math.cos(ARMC * grad) * Math.cos(axialTilt * grad)) / grad
-		while (mc < 0){
-			mc += 360
-		}
-		mc %= 360
-		if(SiderealTime < 180){
-			if(mc > 180){
-				mc -= 180
-			}
-		} else {
-			if (mc < 180){
-				mc += 180
-			}
-		}
+        let mc = Math.atan(Math.sin(ARMC * grad) / Math.cos(ARMC * grad) * Math.cos(axialTilt * grad)) / grad
+        //console.log("MC initial: " + mc)
+		// while (mc < 0){
+		// 	mc += 360
+		// }
+		// mc %= 360
+		// if(SiderealTime < 180){
+		// 	if(mc > 180){
+        //         mc -= 180
+        //         console.log("moving mc to the left of LST")
+		// 	}
+		// } else {
+		// 	if (mc < 180){
+        //         mc += 180
+        //         console.log("moving mc to the right of LST")
+		// 	}
+		// }
 		return mc
 	}
 
@@ -309,9 +314,16 @@ export default class Natal{
 		console.log("Asc: " + ascendant)
 		console.log("MC: " + MC)
 		//this is needed if atan is used instead of atan2
-		
+        
+        if (x < 0){
+            ascendant += 180
+        } else {
+            ascendant += 360
+        }
+        console.log("asc first fix: " + ascendant)
+
 		while (ascendant < 0){
-			ascendant += 180
+			ascendant += 360
 			console.log("Asc was less than 0. fixin it")
 			console.log("Asc: " + ascendant)
 		}
@@ -319,13 +331,17 @@ export default class Natal{
 			ascendant = ascendant % 360
 			console.log("Asc was more than 360. fixin it")
 			console.log("Asc: " + ascendant)
-		}
+        }
+        
+        // if (MC < 0){
+        //     ascendant += 180
+        // }
 
-		if(ascendant > MC){
-			ascendant -= 180
-			console.log('ASC more THAN MC')
-			console.log("Asc: " + ascendant)
-		}
+		// if(ascendant < MC){
+		// 	ascendant += 180
+		// 	console.log('ASC less THAN MC')
+		// 	console.log("Asc: " + ascendant)
+		// }
 		// if(ascendant > MC + 180){
 		// 	ascendant -= 180
 		// 	console.log('ASC > MC + 180')
