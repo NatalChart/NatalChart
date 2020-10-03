@@ -9,7 +9,7 @@ module.exports = {
   },
   output: {
     filename: `scripts/[name].[hash:8].js`,
-    path: paths.build,
+    path: paths.doc,
   },
   module: {
     rules: [

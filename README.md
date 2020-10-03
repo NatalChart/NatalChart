@@ -8,7 +8,7 @@ https://github.com/0xStarcat/Moshier-Ephemeris-JS
 ## Commands
 
 - `start` - start the dev server
-- `build` - create build in `build` folder
+- `build` - create build in `doc` folder
 - `analyze` - analyze your production bundle
 - `lint-code` - run an ESLint check
 - `lint-style` - run a Stylelint check
