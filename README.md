@@ -1,5 +1,9 @@
 # Open source natal chart
 
+web app available at 
+https://natalchart.github.io/NatalChart/
+
+
 web app based on a boilerplate:
 https://github.com/vadimmarkov/webpack-es6-sass-boilerplate
 moshier ephemeris implementation:
