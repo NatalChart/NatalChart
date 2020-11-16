@@ -43,6 +43,7 @@ export default class Natal{
 		this.highlightedBonds = []
 		this.highlightedPlanets = []
 		this.outputAuxDataCallback = null
+		this.celestialBodyAnglesAdjustedForOverlap = null
     }
     
     setStorage(storage){
@@ -212,6 +213,7 @@ export default class Natal{
 		this.MC = this.calculateMediumCoeli(this.LST)
 		this.ascendant = this.calculateAsc(this.LST, this.MC, this.observerLatitude)
 		this.makeBonds()
+		this.celestialBodyAnglesAdjustedForOverlap = null
 		this.render()
 		this.outputAuxDataCallback()
 	}
@@ -352,6 +354,81 @@ export default class Natal{
 		return ascendant
 	}
 
+	//adjust planet signs so they won't overlap
+	adjustPlanetAnglesForOverlap(celBodies){
+		const eps = 5
+		const adjShift = 8
+		let len = celBodies.length
+		let tmp = []
+		//sort celBodies but save original index:
+		celBodies.forEach((e, i) => {
+			tmp[i] = {
+				val: e,
+				ind: i
+			}
+		})
+		tmp.sort((a,b) => {
+			return a.val - b.val
+		})
+		let adjusted = Array.from(tmp, x => x.val)
+		let ind = Array.from(tmp, x => x.ind)
+		
+		let addToCluster = function(cluster, i){
+			cluster.push(i)
+			// console.log('cluster start ' + i)
+			// console.log(adjusted[i])
+			// console.log(adjusted[(i + 1) % len])
+			// console.log(adjusted[i] - adjusted[(i + 1) % len])
+			// console.log(Math.abs(adjusted[i] - adjusted[(i + 1) % len]))
+			if (Math.abs(adjusted[i] - adjusted[(i + 1) % len]) < eps){
+				addToCluster(cluster, (i + 1) % len)
+			}
+		}
+
+		let resolveCluster = function(cluster){
+			let totalShift = 0
+			for (let i = 0; i < cluster.length - 1; i++){
+				let shift = adjShift - Math.abs(adjusted[cluster[i]] - adjusted[cluster[i + 1]])
+				adjusted[cluster[i + 1]] = (adjusted[cluster[i + 1]] + shift) % 360
+				//console.log(adjusted[cluster[i + 1]])
+				totalShift += shift
+			}
+			cluster.map((e) => {
+				adjusted[e] = (adjusted[e] - totalShift / 2) % 360
+			})
+		}
+		
+		let clusters = []
+		do {
+			clusters = []
+			for (let i = 0; i < len; i++){
+				let cluster = []
+				addToCluster(cluster, i)
+				if (cluster.length > 1){
+					clusters.push(cluster)
+				}
+			}
+			clusters.forEach(element => {
+				resolveCluster(element)
+			});
+			
+		} while (clusters.length > 0)
+		
+
+		//restore original index
+		let restored = new Array(len).fill(0);
+		for(let i = 0; i < len; i++){
+			restored[ind[i]] = adjusted[i]
+		}
+		// console.log("original:")
+		// console.log(celBodies)
+		// console.log("adjusted:")
+		// console.log(adjusted)
+		// console.log("restored:")
+		// console.log(restored)
+		return restored
+	}
+
 	render() {
 		if (this.canvas.getContext) {
 			let highlightMode = this.highlightedBonds.size > 0
@@ -421,9 +498,14 @@ export default class Natal{
 						ctx.globalAlpha = 0.05
 					}
 				}
+
+				if (!this.celestialBodyAnglesAdjustedForOverlap){
+					this.celestialBodyAnglesAdjustedForOverlap = this.adjustPlanetAnglesForOverlap(this.celestialBodyAngles)
+				}
+
 				ctx.fillText(celestialBodySymbols[i], 
-					radiusForCelBodies * Math.sin((this.celestialBodyAngles[i] - this.zeroShiftAngle - signsAngleShift) * grad) - 10,
-					radiusForCelBodies * Math.cos((this.celestialBodyAngles[i] - this.zeroShiftAngle - signsAngleShift) * grad) + 10)
+					radiusForCelBodies * Math.sin((this.celestialBodyAnglesAdjustedForOverlap[i] - this.zeroShiftAngle - signsAngleShift) * grad) - 10,
+					radiusForCelBodies * Math.cos((this.celestialBodyAnglesAdjustedForOverlap[i] - this.zeroShiftAngle - signsAngleShift) * grad) + 10)
 				if (highlightMode){
 					ctx.globalAlpha = 1
 				}

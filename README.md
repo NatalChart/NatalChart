@@ -18,3 +18,9 @@ https://github.com/0xStarcat/Moshier-Ephemeris-JS
 - `lint-style` - run a Stylelint check
 - `check-eslint-config` - check if ESLint config contains any rules that are unnecessary or conflict with Prettier
 - `check-stylelint-config` - check if Stylelint config contains any rules that are unnecessary or conflict with Prettier
+
+in order to add subtree (i.e. github pages) to the rep:
+git add build && git commit -m "build subtree commit"
+
+and then you want to push:
+git subtree push --prefix build host gh-pages
