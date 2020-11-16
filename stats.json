@@ -1,0 +1,1418 @@
+{
+  "errors": [],
+  "warnings": [],
+  "version": "4.44.1",
+  "hash": "4d79a03ad1a0ec224d65",
+  "assetsByChunkName": {
+    "app": [
+      "stylesheets/app.4d79a03a.css",
+      "scripts/app.4d79a03a.js",
+      "stylesheets/app.4d79a03a.css.map",
+      "scripts/app.4d79a03a.js.map"
+    ]
+  },
+  "assets": [
+    {
+      "name": ".nojekyll",
+      "size": 0,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "favicon.ico",
+      "size": 5694,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "fonts/Roboto-Light.f0fc91f2.woff",
+      "size": 20904,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "index.html",
+      "size": 3228,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "robots.txt",
+      "size": 83,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "scripts/app.4d79a03a.js",
+      "size": 1178830,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "app"
+      ],
+      "info": {
+        "immutable": true
+      },
+      "emitted": false
+    },
+    {
+      "name": "scripts/app.4d79a03a.js.map",
+      "size": 4038275,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "app"
+      ],
+      "info": {
+        "development": true
+      },
+      "emitted": false
+    },
+    {
+      "name": "stylesheets/app.4d79a03a.css",
+      "size": 2518,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "app"
+      ],
+      "info": {
+        "immutable": true
+      },
+      "emitted": false
+    },
+    {
+      "name": "stylesheets/app.4d79a03a.css.map",
+      "size": 9419,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "app"
+      ],
+      "info": {
+        "development": true
+      },
+      "emitted": false
+    }
+  ],
+  "filteredAssets": 0,
+  "entrypoints": {
+    "app": {
+      "chunks": [
+        0
+      ],
+      "assets": [
+        "stylesheets/app.4d79a03a.css",
+        "scripts/app.4d79a03a.js",
+        "stylesheets/app.4d79a03a.css.map",
+        "scripts/app.4d79a03a.js.map"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "modules": [
+    {
+      "id": 2,
+      "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\@babel\\runtime\\helpers\\classCallCheck.js",
+      "name": "../node_modules/@babel/runtime/helpers/classCallCheck.js",
+      "index": 6,
+      "index2": 4,
+      "size": 196,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\storage.js",
+      "issuerId": null,
+      "issuerName": "./scripts/storage.js",
+      "issuerPath": [
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+          "name": "./scripts/index.js"
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\storage.js",
+          "name": "./scripts/storage.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "id": 3,
+      "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\@babel\\runtime\\helpers\\createClass.js",
+      "name": "../node_modules/@babel/runtime/helpers/createClass.js",
+      "index": 7,
+      "index2": 5,
+      "size": 596,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\storage.js",
+      "issuerId": null,
+      "issuerName": "./scripts/storage.js",
+      "issuerPath": [
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+          "name": "./scripts/index.js"
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\storage.js",
+          "name": "./scripts/storage.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "id": 4,
+      "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\process\\browser.js",
+      "name": "../node_modules/process/browser.js",
+      "index": 57,
+      "index2": 52,
+      "size": 5418,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\path-browserify\\index.js",
+      "issuerId": 29,
+      "issuerName": "../node_modules/path-browserify/index.js",
+      "issuerPath": [
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+          "name": "./scripts/index.js"
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\storage.js",
+          "name": "./scripts/storage.js"
+        },
+        {
+          "id": 127,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\cjs.js",
+          "name": "../node_modules/file-loader/dist/cjs.js"
+        },
+        {
+          "id": 128,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\index.js",
+          "name": "../node_modules/file-loader/dist/index.js"
+        },
+        {
+          "id": 29,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\path-browserify\\index.js",
+          "name": "../node_modules/path-browserify/index.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "id": 6,
+      "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\@babel\\runtime\\helpers\\defineProperty.js",
+      "name": "../node_modules/@babel/runtime/helpers/defineProperty.js",
+      "index": 5,
+      "index2": 3,
+      "size": 289,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\natal.js",
+      "issuerId": null,
+      "issuerName": "./scripts/natal.js",
+      "issuerPath": [
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+          "name": "./scripts/index.js"
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\natal.js",
+          "name": "./scripts/natal.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "id": 29,
+      "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\path-browserify\\index.js",
+      "name": "../node_modules/path-browserify/index.js",
+      "index": 56,
+      "index2": 53,
+      "size": 8742,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\index.js",
+      "issuerId": 128,
+      "issuerName": "../node_modules/file-loader/dist/index.js",
+      "issuerPath": [
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+          "name": "./scripts/index.js"
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\storage.js",
+          "name": "./scripts/storage.js"
+        },
+        {
+          "id": 127,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\cjs.js",
+          "name": "../node_modules/file-loader/dist/cjs.js"
+        },
+        {
+          "id": 128,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\index.js",
+          "name": "../node_modules/file-loader/dist/index.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "id": 61,
+      "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\loader-utils\\lib\\parseQuery.js",
+      "name": "../node_modules/loader-utils/lib/parseQuery.js",
+      "index": 60,
+      "index2": 55,
+      "size": 1462,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\loader-utils\\lib\\index.js",
+      "issuerId": 129,
+      "issuerName": "../node_modules/loader-utils/lib/index.js",
+      "issuerPath": [
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+          "name": "./scripts/index.js"
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\storage.js",
+          "name": "./scripts/storage.js"
+        },
+        {
+          "id": 127,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\cjs.js",
+          "name": "../node_modules/file-loader/dist/cjs.js"
+        },
+        {
+          "id": 128,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\index.js",
+          "name": "../node_modules/file-loader/dist/index.js"
+        },
+        {
+          "id": 129,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\loader-utils\\lib\\index.js",
+          "name": "../node_modules/loader-utils/lib/index.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "id": 126,
+      "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\mini-css-extract-plugin\\dist\\loader.js!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\css-loader\\dist\\cjs.js??ref--5-1!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\postcss-loader\\src\\index.js??ref--5-2!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\sass-loader\\dist\\cjs.js??ref--5-3!D:\\dev\\projects\\natal_project\\web_v2\\src\\stylesheets\\style.scss",
+      "name": "./stylesheets/style.scss",
+      "index": 1,
+      "index2": 2,
+      "size": 39,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+      "issuerId": null,
+      "issuerName": "./scripts/index.js",
+      "issuerPath": [
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+          "name": "./scripts/index.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "id": 127,
+      "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\cjs.js",
+      "name": "../node_modules/file-loader/dist/cjs.js",
+      "index": 54,
+      "index2": 355,
+      "size": 116,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\storage.js",
+      "issuerId": null,
+      "issuerName": "./scripts/storage.js",
+      "issuerPath": [
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+          "name": "./scripts/index.js"
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\storage.js",
+          "name": "./scripts/storage.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "id": 128,
+      "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\index.js",
+      "name": "../node_modules/file-loader/dist/index.js",
+      "index": 55,
+      "index2": 354,
+      "size": 1938,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\cjs.js",
+      "issuerId": 127,
+      "issuerName": "../node_modules/file-loader/dist/cjs.js",
+      "issuerPath": [
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+          "name": "./scripts/index.js"
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\storage.js",
+          "name": "./scripts/storage.js"
+        },
+        {
+          "id": 127,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\cjs.js",
+          "name": "../node_modules/file-loader/dist/cjs.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "id": 129,
+      "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\loader-utils\\lib\\index.js",
+      "name": "../node_modules/loader-utils/lib/index.js",
+      "index": 58,
+      "index2": 275,
+      "size": 926,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\index.js",
+      "issuerId": 128,
+      "issuerName": "../node_modules/file-loader/dist/index.js",
+      "issuerPath": [
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+          "name": "./scripts/index.js"
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\storage.js",
+          "name": "./scripts/storage.js"
+        },
+        {
+          "id": 127,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\cjs.js",
+          "name": "../node_modules/file-loader/dist/cjs.js"
+        },
+        {
+          "id": 128,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\index.js",
+          "name": "../node_modules/file-loader/dist/index.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "id": 244,
+      "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\schema-utils\\dist\\index.js",
+      "name": "../node_modules/schema-utils/dist/index.js",
+      "index": 280,
+      "index2": 352,
+      "size": 90,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\index.js",
+      "issuerId": 128,
+      "issuerName": "../node_modules/file-loader/dist/index.js",
+      "issuerPath": [
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+          "name": "./scripts/index.js"
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\storage.js",
+          "name": "./scripts/storage.js"
+        },
+        {
+          "id": 127,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\cjs.js",
+          "name": "../node_modules/file-loader/dist/cjs.js"
+        },
+        {
+          "id": 128,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\index.js",
+          "name": "../node_modules/file-loader/dist/index.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "id": 307,
+      "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\options.json",
+      "name": "../node_modules/file-loader/dist/options.json",
+      "index": 357,
+      "index2": 353,
+      "size": 1903,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\index.js",
+      "issuerId": 128,
+      "issuerName": "../node_modules/file-loader/dist/index.js",
+      "issuerPath": [
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+          "name": "./scripts/index.js"
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\storage.js",
+          "name": "./scripts/storage.js"
+        },
+        {
+          "id": 127,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\cjs.js",
+          "name": "../node_modules/file-loader/dist/cjs.js"
+        },
+        {
+          "id": 128,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\index.js",
+          "name": "../node_modules/file-loader/dist/index.js"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "id": 308,
+      "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js 56bece8cd48d55fdf2fd588deb695c5c",
+      "name": "./scripts/index.js + 47 modules",
+      "index": 0,
+      "index2": 357,
+      "size": 466964,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": null,
+      "issuerId": null,
+      "issuerName": null,
+      "issuerPath": null,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "modules": [
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+          "name": "./scripts/index.js",
+          "index": 0,
+          "index2": 357,
+          "size": 7048,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [],
+          "issuer": null,
+          "issuerId": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\utilityData.js",
+          "name": "./scripts/utilityData.js",
+          "index": 52,
+          "index2": 50,
+          "size": 1845,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [],
+          "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+          "issuerId": null,
+          "issuerName": "./scripts/index.js",
+          "issuerPath": [
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+              "name": "./scripts/index.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\natal.js",
+          "name": "./scripts/natal.js",
+          "index": 4,
+          "index2": 51,
+          "size": 23392,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [],
+          "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+          "issuerId": null,
+          "issuerName": "./scripts/index.js",
+          "issuerPath": [
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+              "name": "./scripts/index.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\storage.js",
+          "name": "./scripts/storage.js",
+          "index": 53,
+          "index2": 356,
+          "size": 1302,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [],
+          "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+          "issuerId": null,
+          "issuerName": "./scripts/index.js",
+          "issuerPath": [
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+              "name": "./scripts/index.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\Ephemeris.js",
+          "name": "./scripts/ephemeris/Ephemeris.js",
+          "index": 8,
+          "index2": 49,
+          "size": 8403,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [],
+          "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\natal.js",
+          "issuerId": null,
+          "issuerName": "./scripts/natal.js",
+          "issuerPath": [
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+              "name": "./scripts/index.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\natal.js",
+              "name": "./scripts/natal.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\utilities\\kepler.js",
+          "name": "./scripts/ephemeris/utilities/kepler.js",
+          "index": 9,
+          "index2": 13,
+          "size": 9373,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [],
+          "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\Ephemeris.js",
+          "issuerId": null,
+          "issuerName": "./scripts/ephemeris/Ephemeris.js",
+          "issuerPath": [
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+              "name": "./scripts/index.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\natal.js",
+              "name": "./scripts/natal.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\Ephemeris.js",
+              "name": "./scripts/ephemeris/Ephemeris.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\classes\\Body.js",
+          "name": "./scripts/ephemeris/classes/Body.js",
+          "index": 17,
+          "index2": 24,
+          "size": 1632,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [],
+          "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\Ephemeris.js",
+          "issuerId": null,
+          "issuerName": "./scripts/ephemeris/Ephemeris.js",
+          "issuerPath": [
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+              "name": "./scripts/index.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\natal.js",
+              "name": "./scripts/natal.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\Ephemeris.js",
+              "name": "./scripts/ephemeris/Ephemeris.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\classes\\Earth.js",
+          "name": "./scripts/ephemeris/classes/Earth.js",
+          "index": 29,
+          "index2": 25,
+          "size": 735,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [],
+          "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\Ephemeris.js",
+          "issuerId": null,
+          "issuerName": "./scripts/ephemeris/Ephemeris.js",
+          "issuerPath": [
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+              "name": "./scripts/index.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\natal.js",
+              "name": "./scripts/natal.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\Ephemeris.js",
+              "name": "./scripts/ephemeris/Ephemeris.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\classes\\Sol.js",
+          "name": "./scripts/ephemeris/classes/Sol.js",
+          "index": 28,
+          "index2": 34,
+          "size": 5828,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [],
+          "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\Ephemeris.js",
+          "issuerId": null,
+          "issuerName": "./scripts/ephemeris/Ephemeris.js",
+          "issuerPath": [
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+              "name": "./scripts/index.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\natal.js",
+              "name": "./scripts/natal.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\Ephemeris.js",
+              "name": "./scripts/ephemeris/Ephemeris.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\classes\\Luna.js",
+          "name": "./scripts/ephemeris/classes/Luna.js",
+          "index": 38,
+          "index2": 38,
+          "size": 17667,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [],
+          "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\Ephemeris.js",
+          "issuerId": null,
+          "issuerName": "./scripts/ephemeris/Ephemeris.js",
+          "issuerPath": [
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+              "name": "./scripts/index.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\natal.js",
+              "name": "./scripts/natal.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\Ephemeris.js",
+              "name": "./scripts/ephemeris/Ephemeris.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\classes\\HeliocentricOrbitalBody.js",
+          "name": "./scripts/ephemeris/classes/HeliocentricOrbitalBody.js",
+          "index": 42,
+          "index2": 42,
+          "size": 16659,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [],
+          "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\Ephemeris.js",
+          "issuerId": null,
+          "issuerName": "./scripts/ephemeris/Ephemeris.js",
+          "issuerPath": [
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+              "name": "./scripts/index.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\natal.js",
+              "name": "./scripts/natal.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\Ephemeris.js",
+              "name": "./scripts/ephemeris/Ephemeris.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\classes\\Star.js",
+          "name": "./scripts/ephemeris/classes/Star.js",
+          "index": 46,
+          "index2": 44,
+          "size": 7528,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [],
+          "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\Ephemeris.js",
+          "issuerId": null,
+          "issuerName": "./scripts/ephemeris/Ephemeris.js",
+          "issuerPath": [
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+              "name": "./scripts/index.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\natal.js",
+              "name": "./scripts/natal.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\Ephemeris.js",
+              "name": "./scripts/ephemeris/Ephemeris.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\utilities\\validators.js",
+          "name": "./scripts/ephemeris/utilities/validators.js",
+          "index": 51,
+          "index2": 47,
+          "size": 2372,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [],
+          "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\Ephemeris.js",
+          "issuerId": null,
+          "issuerName": "./scripts/ephemeris/Ephemeris.js",
+          "issuerPath": [
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+              "name": "./scripts/index.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\natal.js",
+              "name": "./scripts/natal.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\Ephemeris.js",
+              "name": "./scripts/ephemeris/Ephemeris.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\classes\\Observer.js",
+          "name": "./scripts/ephemeris/classes/Observer.js",
+          "index": 48,
+          "index2": 48,
+          "size": 5609,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [],
+          "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\Ephemeris.js",
+          "issuerId": null,
+          "issuerName": "./scripts/ephemeris/Ephemeris.js",
+          "issuerPath": [
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+              "name": "./scripts/index.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\natal.js",
+              "name": "./scripts/natal.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\Ephemeris.js",
+              "name": "./scripts/ephemeris/Ephemeris.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\constants\\index.js",
+          "name": "./scripts/ephemeris/constants/index.js",
+          "index": 10,
+          "index2": 6,
+          "size": 2000,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [],
+          "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\utilities\\kepler.js",
+          "issuerId": null,
+          "issuerName": "./scripts/ephemeris/utilities/kepler.js",
+          "issuerPath": [
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+              "name": "./scripts/index.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\natal.js",
+              "name": "./scripts/natal.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\Ephemeris.js",
+              "name": "./scripts/ephemeris/Ephemeris.js"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\ephemeris\\utilities\\kepler.js",
+              "name": "./scripts/ephemeris/utilities/kepler.js"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        }
+      ],
+      "filteredModules": 33
+    },
+    {
+      "id": "",
+      "identifier": "css D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\css-loader\\dist\\cjs.js??ref--5-1!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\postcss-loader\\src\\index.js??ref--5-2!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\sass-loader\\dist\\cjs.js??ref--5-3!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\normalize.css\\normalize.css 0",
+      "name": "css ../node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/postcss-loader/src??ref--5-2!../node_modules/sass-loader/dist/cjs.js??ref--5-3!../node_modules/normalize.css/normalize.css",
+      "index": 2,
+      "index2": 0,
+      "size": 1895,
+      "built": false,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\mini-css-extract-plugin\\dist\\loader.js!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\css-loader\\dist\\cjs.js??ref--5-1!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\postcss-loader\\src\\index.js??ref--5-2!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\sass-loader\\dist\\cjs.js??ref--5-3!D:\\dev\\projects\\natal_project\\web_v2\\src\\stylesheets\\style.scss",
+      "issuerId": 126,
+      "issuerName": "./stylesheets/style.scss",
+      "issuerPath": [
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+          "name": "./scripts/index.js"
+        },
+        {
+          "id": 126,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\mini-css-extract-plugin\\dist\\loader.js!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\css-loader\\dist\\cjs.js??ref--5-1!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\postcss-loader\\src\\index.js??ref--5-2!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\sass-loader\\dist\\cjs.js??ref--5-3!D:\\dev\\projects\\natal_project\\web_v2\\src\\stylesheets\\style.scss",
+          "name": "./stylesheets/style.scss"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "id": "",
+      "identifier": "css D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\css-loader\\dist\\cjs.js??ref--5-1!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\postcss-loader\\src\\index.js??ref--5-2!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\sass-loader\\dist\\cjs.js??ref--5-3!D:\\dev\\projects\\natal_project\\web_v2\\src\\stylesheets\\style.scss 0",
+      "name": "css ../node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/postcss-loader/src??ref--5-2!../node_modules/sass-loader/dist/cjs.js??ref--5-3!./stylesheets/style.scss",
+      "index": 3,
+      "index2": 1,
+      "size": 779,
+      "built": false,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\mini-css-extract-plugin\\dist\\loader.js!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\css-loader\\dist\\cjs.js??ref--5-1!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\postcss-loader\\src\\index.js??ref--5-2!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\sass-loader\\dist\\cjs.js??ref--5-3!D:\\dev\\projects\\natal_project\\web_v2\\src\\stylesheets\\style.scss",
+      "issuerId": 126,
+      "issuerName": "./stylesheets/style.scss",
+      "issuerPath": [
+        {
+          "id": null,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\babel-loader\\lib\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\scripts\\index.js",
+          "name": "./scripts/index.js"
+        },
+        {
+          "id": 126,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\mini-css-extract-plugin\\dist\\loader.js!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\css-loader\\dist\\cjs.js??ref--5-1!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\postcss-loader\\src\\index.js??ref--5-2!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\sass-loader\\dist\\cjs.js??ref--5-3!D:\\dev\\projects\\natal_project\\web_v2\\src\\stylesheets\\style.scss",
+          "name": "./stylesheets/style.scss"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0
+    }
+  ],
+  "filteredModules": 296,
+  "logging": {
+    "webpack.buildChunkGraph.visitModules": {
+      "entries": [],
+      "filteredEntries": 2,
+      "debug": false
+    }
+  },
+  "children": [
+    {
+      "errors": [],
+      "warnings": [],
+      "assetsByChunkName": {},
+      "assets": [
+        {
+          "name": "index.html",
+          "size": 8433,
+          "chunks": [
+            0
+          ],
+          "chunkNames": [],
+          "info": {},
+          "emitted": false
+        }
+      ],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "undefined": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "index.html"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "modules": [
+        {
+          "id": 0,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\html-webpack-plugin\\lib\\loader.js!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\html-loader\\index.js!D:\\dev\\projects\\natal_project\\web_v2\\src\\index.html",
+          "name": "../node_modules/html-webpack-plugin/lib/loader.js!./index.html",
+          "index": 0,
+          "index2": 0,
+          "size": 4740,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "issuer": null,
+          "issuerId": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        }
+      ],
+      "filteredModules": 0,
+      "logging": {
+        "webpack.buildChunkGraph.visitModules": {
+          "entries": [],
+          "filteredEntries": 2,
+          "debug": false
+        }
+      },
+      "children": [],
+      "name": "html-webpack-plugin for \"index.html\""
+    },
+    {
+      "errors": [],
+      "warnings": [],
+      "assetsByChunkName": {},
+      "assets": [],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "modules": [
+        {
+          "id": 0,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\css-loader\\dist\\runtime\\api.js",
+          "name": "../node_modules/css-loader/dist/runtime/api.js",
+          "index": 1,
+          "index2": 0,
+          "size": 2517,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\css-loader\\dist\\cjs.js??ref--5-1!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\postcss-loader\\src\\index.js??ref--5-2!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\sass-loader\\dist\\cjs.js??ref--5-3!D:\\dev\\projects\\natal_project\\web_v2\\src\\stylesheets\\style.scss",
+          "issuerId": 1,
+          "issuerName": "../node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/postcss-loader/src??ref--5-2!../node_modules/sass-loader/dist/cjs.js??ref--5-3!./stylesheets/style.scss",
+          "issuerPath": [
+            {
+              "id": 1,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\css-loader\\dist\\cjs.js??ref--5-1!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\postcss-loader\\src\\index.js??ref--5-2!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\sass-loader\\dist\\cjs.js??ref--5-3!D:\\dev\\projects\\natal_project\\web_v2\\src\\stylesheets\\style.scss",
+              "name": "../node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/postcss-loader/src??ref--5-2!../node_modules/sass-loader/dist/cjs.js??ref--5-3!./stylesheets/style.scss"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "id": 1,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\css-loader\\dist\\cjs.js??ref--5-1!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\postcss-loader\\src\\index.js??ref--5-2!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\sass-loader\\dist\\cjs.js??ref--5-3!D:\\dev\\projects\\natal_project\\web_v2\\src\\stylesheets\\style.scss",
+          "name": "../node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/postcss-loader/src??ref--5-2!../node_modules/sass-loader/dist/cjs.js??ref--5-3!./stylesheets/style.scss",
+          "index": 0,
+          "index2": 4,
+          "size": 3827,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "issuer": null,
+          "issuerId": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "id": 2,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\css-loader\\dist\\cjs.js??ref--5-1!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\postcss-loader\\src\\index.js??ref--5-2!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\sass-loader\\dist\\cjs.js??ref--5-3!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\normalize.css\\normalize.css",
+          "name": "../node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/postcss-loader/src??ref--5-2!../node_modules/sass-loader/dist/cjs.js??ref--5-3!../node_modules/normalize.css/normalize.css",
+          "index": 2,
+          "index2": 1,
+          "size": 9713,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\css-loader\\dist\\cjs.js??ref--5-1!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\postcss-loader\\src\\index.js??ref--5-2!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\sass-loader\\dist\\cjs.js??ref--5-3!D:\\dev\\projects\\natal_project\\web_v2\\src\\stylesheets\\style.scss",
+          "issuerId": 1,
+          "issuerName": "../node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/postcss-loader/src??ref--5-2!../node_modules/sass-loader/dist/cjs.js??ref--5-3!./stylesheets/style.scss",
+          "issuerPath": [
+            {
+              "id": 1,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\css-loader\\dist\\cjs.js??ref--5-1!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\postcss-loader\\src\\index.js??ref--5-2!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\sass-loader\\dist\\cjs.js??ref--5-3!D:\\dev\\projects\\natal_project\\web_v2\\src\\stylesheets\\style.scss",
+              "name": "../node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/postcss-loader/src??ref--5-2!../node_modules/sass-loader/dist/cjs.js??ref--5-3!./stylesheets/style.scss"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "id": 3,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\css-loader\\dist\\runtime\\getUrl.js",
+          "name": "../node_modules/css-loader/dist/runtime/getUrl.js",
+          "index": 3,
+          "index2": 2,
+          "size": 830,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\css-loader\\dist\\cjs.js??ref--5-1!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\postcss-loader\\src\\index.js??ref--5-2!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\sass-loader\\dist\\cjs.js??ref--5-3!D:\\dev\\projects\\natal_project\\web_v2\\src\\stylesheets\\style.scss",
+          "issuerId": 1,
+          "issuerName": "../node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/postcss-loader/src??ref--5-2!../node_modules/sass-loader/dist/cjs.js??ref--5-3!./stylesheets/style.scss",
+          "issuerPath": [
+            {
+              "id": 1,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\css-loader\\dist\\cjs.js??ref--5-1!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\postcss-loader\\src\\index.js??ref--5-2!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\sass-loader\\dist\\cjs.js??ref--5-3!D:\\dev\\projects\\natal_project\\web_v2\\src\\stylesheets\\style.scss",
+              "name": "../node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/postcss-loader/src??ref--5-2!../node_modules/sass-loader/dist/cjs.js??ref--5-3!./stylesheets/style.scss"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        },
+        {
+          "id": 4,
+          "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\file-loader\\dist\\cjs.js??ref--7!D:\\dev\\projects\\natal_project\\web_v2\\src\\fonts\\Roboto-Light.woff",
+          "name": "./fonts/Roboto-Light.woff",
+          "index": 4,
+          "index2": 3,
+          "size": 55,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "issuer": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\css-loader\\dist\\cjs.js??ref--5-1!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\postcss-loader\\src\\index.js??ref--5-2!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\sass-loader\\dist\\cjs.js??ref--5-3!D:\\dev\\projects\\natal_project\\web_v2\\src\\stylesheets\\style.scss",
+          "issuerId": 1,
+          "issuerName": "../node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/postcss-loader/src??ref--5-2!../node_modules/sass-loader/dist/cjs.js??ref--5-3!./stylesheets/style.scss",
+          "issuerPath": [
+            {
+              "id": 1,
+              "identifier": "D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\css-loader\\dist\\cjs.js??ref--5-1!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\postcss-loader\\src\\index.js??ref--5-2!D:\\dev\\projects\\natal_project\\web_v2\\node_modules\\sass-loader\\dist\\cjs.js??ref--5-3!D:\\dev\\projects\\natal_project\\web_v2\\src\\stylesheets\\style.scss",
+              "name": "../node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/postcss-loader/src??ref--5-2!../node_modules/sass-loader/dist/cjs.js??ref--5-3!./stylesheets/style.scss"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0
+        }
+      ],
+      "filteredModules": 0,
+      "logging": {
+        "webpack.buildChunkGraph.visitModules": {
+          "entries": [],
+          "filteredEntries": 2,
+          "debug": false
+        }
+      },
+      "children": [],
+      "name": "mini-css-extract-plugin ../node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/postcss-loader/src/index.js??ref--5-2!../node_modules/sass-loader/dist/cjs.js??ref--5-3!stylesheets/style.scss"
+    }
+  ]
+}
