@@ -42,3 +42,19 @@ body {
   font-family: Roboto, sans-serif;
   line-height: 1.4;
 }
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 20px;
+  grid-template-areas:
+    "Controls Chart Chart Info"
+    "Controls Chart Chart Info"
+    ". SaveLoad SaveLoad .";
+}
+.Chart { grid-area: Chart; }
+.Controls { grid-area: Controls; }
+.Info { grid-area: Info; }
+.SaveLoad { grid-area: SaveLoad; }

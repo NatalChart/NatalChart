@@ -21,8 +21,61 @@
   </head>
 
   <body>
-    <h1>Natal</h1>
-    <section class="container">
+    <h1><div id='natalName'>Natal</div></h1>
+    <div class="grid-container">
+      <div class="Chart">
+        <canvas id="canvas" width="610" height="610"></canvas>
+      </div>
+      <div class="Controls">
+        <div class="controls" style='text-align: right;'>
+          <button id="btnDraw">Go!</button>
+          <br>
+          <input type="text" id="nameInput" value="">
+          <br>
+          <input type="date" id="dataInput" value="">
+          <br>
+          (must be in UTC)<input type="time" id="timeInput" value="">
+          <br>
+          <label>lat </label><input type="number" id="latInput" value="0.0">
+          <br>
+          <label>long </label><input type="number" id="longInput" value="0.0">
+          <br>
+          <br>
+        
+          <label>Epsilon table</label>
+          <div id="epsilonInput">
+            Opposition <input type="number" id="epsilonOpposition" data-bond_id="0" value="10.0" min="0" max="15" step="0.5"><br>
+            Conjunction <input type="number" id="epsilonConjunction" data-bond_id="1" value="3.0" min="0" max="15" step="0.5"><br>
+            Trine <input type="number" id="epsilonTrine" data-bond_id="2" value="10.0" min="0" max="15" step="0.5"><br>
+            Square <input type="number" id="epsilonSquare" data-bond_id="3" value="10.0" min="0" max="15" step="0.5"><br>
+            Sextile <input type="number" id="epsilonSextile" data-bond_id="4" value="8.0" min="0" max="15" step="0.5"><br>
+            Quincunx <input type="number" id="epsilonQuincunx" data-bond_id="5" value="4.0" min="0" max="15" step="0.5"><br>
+            Semisquare <input type="number" id="epsilonSemisquare" data-bond_id="6" value="2.0" min="0" max="15" step="0.5"><br>
+            Semisextile <input type="number" id="epsilonSemisextile" data-bond_id="7" value="4.0" min="0" max="15" step="0.5"><br>
+            Uniform (0 = off) <input type="number" id="epsilonUniform" data-bond_id="-1" value="0.0" min="0" max="15" step="0.5"><br>
+          </div>
+          <button id="btnResetEpsilon">Reset</button>
+        </div>
+      </div>
+      <div class="Info">
+        <div id="celBodyAnglesOutput"> </div>
+        <br>
+        <div>Bonds found between:</div>
+        <div id="bondsOutput"> </div>
+        <br>
+        <label>Ascendant: </label><div id="ascendantOutput"> </div>
+      </div>
+      <div class="SaveLoad">
+        <br>
+        <div style="text-align:right">
+          <h1>SAVE/LOAD</h1>
+          <button id="btnSave" >Save</button>
+        </div>
+        <br>
+        <div id="storageList" style="text-align:right">Storage empty</div>
+      </div>
+    </div>
+    <!-- <section class="container">
       <div class="leftContainer">
         <div id="canvas-container">
           <canvas id="canvas" width="610" height="610"></canvas>
@@ -57,11 +110,6 @@
             </div>
             <button id="btnResetEpsilon">Reset</button>
           </div>
-          <!-- debug -->
-          <!-- <div class="slidecontainer">
-            <input type="range" min="0" max="360" value="0" class="slider" id="myRange">
-            <div id="myRangeOutput"></div>
-          </div> -->
           
         </div>
       </div>
@@ -78,10 +126,9 @@
     <h1>SAVE/LOAD</h1>
     <button id="btnSave">Save</button>
     <br>
-    <div id="storageList" style="text-align:right">Storage empty</div>
+    <div id="storageList" style="text-align:right">Storage empty</div> -->
     <h1>ROADMAP</h1>
     <ol>
-      <!-- <li>fix ascendant</li> -->
       <li>geolocation on map via leafletjs </li>
       <li>time input based on geolocation OR utc</li>
       <li>sec progression</li>

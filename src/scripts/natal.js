@@ -121,13 +121,6 @@ export default class Natal{
 				let diffRight = 360 - diffLeft
 				let diff = Math.min(diffLeft, diffRight)
 				bondId += this.checkBond(this.bonds, i, j, diff, bondId)
-				// console.log("drrr")
-				// console.log(diffLeft)
-				// console.log(diffRight)
-				// console.log(diff)
-				// console.log(this.celestialBodyAngles[i])
-				// console.log(this.celestialBodyAngles[j])
-				// console.log(tmp)
 			}
 		}
 		// console.log("Bonds: ")
@@ -178,7 +171,8 @@ export default class Natal{
 	getCelBodyCoordString(){
 		let tmp = []
 		this.ephemeris.Results.forEach((celBody, i) => {
-			tmp.push(`<div>${celBody.key} ${celestialBodySymbols[i]}: ${celBody.position.apparentLongitude30String}</div>`)
+			let signInd = Math.floor(celBody.position.apparentLongitude / 30)
+			tmp.push(`<div>${celBody.key} ${celestialBodySymbols[i]}: ${celBody.position.apparentLongitude30String} ${signsSymbols[signInd]}</div>`)
 		})
 		return tmp.join("")
 	}
@@ -455,7 +449,7 @@ export default class Natal{
 				ctx.moveTo(circleHouseInnerRadius * Math.sin(angle), circleHouseInnerRadius * Math.cos(angle))
 				ctx.arc(0, 0, circleHouseInnerRadius, 30 * i * grad, 30 * (i + 1) * grad, false);
 				ctx.lineTo(circleHouseOuterRadius * Math.sin(angle - 30 * grad), circleHouseOuterRadius * Math.cos(angle - 30 * grad))
-				let houseNumb = ((i+2)%12)+1
+				let houseNumb = ((i + 2) % 12) + 1
 				let leftShift = null
 				if (houseNumb > 9){
 					leftShift = 15

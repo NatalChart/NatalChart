@@ -14,18 +14,18 @@ export const signsSymbols = [
 ]
 
 export const signsNames = [
-	"aries",
-	"taurus",
-	"gemini",
-	"cancer",
-	"leo",
-	"virgo",
-	"libra",
-	"scorpio",
-	"sagittariu",
-	"capricorn",
-	"aquarius",
-	"pisces "
+	"Aries",
+	"Taurus",
+	"Gemini",
+	"Cancer",
+	"Leo",
+	"Virgo",
+	"Libra",
+	"Scorpio",
+	"Sagittariu",
+	"Capricorn",
+	"Aquarius",
+	"Pisces "
 ]
 
 export var celestialBodyNames = [

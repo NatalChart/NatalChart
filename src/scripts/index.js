@@ -8,6 +8,7 @@ import {epsilonTable} from './utilityData'
 
 console.log("Hello, za world!")
 
+
 let inputName = document.getElementById("nameInput")
 let inputDate = document.getElementById("dataInput")
 let inputTime = document.getElementById("timeInput")
@@ -19,6 +20,7 @@ let btnGo = document.getElementById("btnDraw")
 let btnResetEps = document.getElementById("btnResetEpsilon")
 let btnSave = document.getElementById("btnSave")
 
+let outputName = document.getElementById("natalName")
 let outputBonds = document.getElementById("bondsOutput")
 let outputCelBody = document.getElementById("celBodyAnglesOutput")
 let outputAscendant = document.getElementById("ascendantOutput")
@@ -47,6 +49,7 @@ function draw(){
 	//TO DO make sure date understands that this is UTC
 	let date = new Date(dateRaw + " " + timeRaw)
 	console.log(date)
+	outputName.innerHTML = inputName.value == '' ? "Natal" : inputName.value
 	natal.draw(name, date, long, lat)
 }
 
@@ -59,6 +62,7 @@ function dateToView(date){
 
 function fillControls(obj){
 	let dt = dateToView(obj.date)
+	outputName.innerHTML = obj.name
 	inputName.value = obj.name
 	inputTime.value = dt.time
 	inputDate.value = dt.date

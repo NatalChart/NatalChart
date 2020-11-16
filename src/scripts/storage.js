@@ -21,7 +21,7 @@ export default class Storage{
     }
 
     getItemsList(callback){
-        console.log("LS TEST")
+        //console.log("LS TEST")
         let tmp = []
         for (let i = 0; i < this.ls.length; i++){
             let key = this.ls.key(i)

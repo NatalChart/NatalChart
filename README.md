@@ -19,8 +19,16 @@ https://github.com/0xStarcat/Moshier-Ephemeris-JS
 - `check-eslint-config` - check if ESLint config contains any rules that are unnecessary or conflict with Prettier
 - `check-stylelint-config` - check if Stylelint config contains any rules that are unnecessary or conflict with Prettier
 
-in order to add subtree (i.e. github pages) to the rep:
-git add build && git commit -m "build subtree commit"
 
-and then you want to push:
+
+In order to host the app (i.e. github pages) add subtree to the rep:
+npm run build
+git add build && git commit -m "build subtree commit"
 git subtree push --prefix build host gh-pages
+
+Mind it that repo name should be the same as github username
+
+If after several commits to master there are errors with the subtree, its not worth it to try to rebase or fix it (thanks, git), just manually remove the branch and create subtree again
+
+git branch -d gh-pages
+git push host --delete gh-pages
