@@ -154,7 +154,7 @@ export default class Natal{
         //probably can optimize this
 		let tmp = []
 		this.bonds.forEach((bond) => {
-			tmp.push(`<div data-id="${bond.id}">${bond.type} ${celestialBodySymbols[bond.from]} to ${celestialBodySymbols[bond.to]} ${Number.parseFloat(bond.angleDiff).toFixed(3)}°</div>`)
+			tmp.push(`<div class="bondLine" data-id="${bond.id}" data-highlight="false">${bond.type} ${celestialBodySymbols[bond.from]} to ${celestialBodySymbols[bond.to]} ${Number.parseFloat(bond.angleDiff).toFixed(3)}°</div>`)
 		})
 		if(tmp.length == 0){
 			tmp.push("<div>NONE FOUND</div>")
@@ -172,7 +172,8 @@ export default class Natal{
 		let tmp = []
 		this.ephemeris.Results.forEach((celBody, i) => {
 			let signInd = Math.floor(celBody.position.apparentLongitude / 30)
-			tmp.push(`<div>${celBody.key} ${celestialBodySymbols[i]}: ${celBody.position.apparentLongitude30String} ${signsSymbols[signInd]}</div>`)
+			let retr = celBody.motion.isRetrograde ? "<b>(R)</b>" : ""
+			tmp.push(`<div>${celestialBodySymbols[i]}: ${celBody.position.apparentLongitude30String} ${signsSymbols[signInd]} ${retr} </div>`)
 		})
 		return tmp.join("")
 	}
@@ -487,7 +488,7 @@ export default class Natal{
 				if (highlightMode){
 					if(this.highlightedPlanets.has(i)){
 						ctx.globalAlpha = 1
-						ctx.arc(x,y,5,0, Math.PI * 2, true)
+						ctx.arc(x,y,3,0, Math.PI * 2, true)
 					}else{
 						ctx.globalAlpha = 0.05
 					}

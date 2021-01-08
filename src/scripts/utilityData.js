@@ -79,14 +79,14 @@ export var epsilonTable = {
 }
 
 export const bondTypesToColors = {
-	"Opposition" : "black",
-	"Conjunction" : "black",
+	"Opposition" : "blue",
+	"Conjunction" : "blue",
 	"Trine" : "red",
-	"Square" : "black",
-	"Sextile" : "blue",
-	"Quincunx" : "cyan",
-	"Semisquare" : "black",
-	"Semisextile" : "blue"
+	"Square" : "blue",
+	"Sextile" : "red",
+	"Quincunx" : "blue",
+	"Semisquare" : "blue",
+	"Semisextile" : "red"
 }
 
 export const bondTypesToLineStyle = {

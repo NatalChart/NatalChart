@@ -18,6 +18,7 @@ let inputEpsilon = document.getElementById("epsilonInput")
 
 let btnGo = document.getElementById("btnDraw")
 let btnResetEps = document.getElementById("btnResetEpsilon")
+let btnResetHighlights = document.getElementById("btnResetBondsHighlight")
 let btnSave = document.getElementById("btnSave")
 
 let outputName = document.getElementById("natalName")
@@ -26,13 +27,12 @@ let outputCelBody = document.getElementById("celBodyAnglesOutput")
 let outputAscendant = document.getElementById("ascendantOutput")
 let outputStorageList = document.getElementById("storageList")
 
-
 let canvas = document.getElementById('canvas');
-
 
 let natal = new Natal(canvas)
 let storage = new Storage()
 natal.setStorage(storage)
+let currentChosenHighlights = []
 
 natal.addOutputAuxDataCallback((payload) => {
 	outputBonds.innerHTML = payload.bondsString
@@ -41,6 +41,7 @@ natal.addOutputAuxDataCallback((payload) => {
 })
 
 function draw(){
+	currentChosenHighlights = []
 	let name = inputName.value
 	let dateRaw = dataInput.value
 	let timeRaw = inputTime.value
@@ -147,14 +148,46 @@ btnResetEps.onclick = (event) => {
 
 outputBonds.onmouseover = (event) => {
 	event.target.style.color = "orange";
-	natal.setHighlightedBonds([event.target.dataset.id])
+	natal.setHighlightedBonds(currentChosenHighlights.concat([event.target.dataset.id]))
 }
 
 outputBonds.onmouseout = (event) => {
 	event.target.style.color = "";
 	natal.clearHighlights()
+	natal.setHighlightedBonds(currentChosenHighlights)
 }
 
+outputBonds.onclick = (event) => {
+	console.log("CLICK ON")
+	console.log(event.target)
+	console.log(event.target.highlightOn)
+	if(event.target.dataset.highlight == "false"){
+		currentChosenHighlights.push(event.target.dataset.id)
+		natal.setHighlightedBonds(currentChosenHighlights)
+		event.target.style.fontWeight = "bold"
+		event.target.dataset.highlight = "true"
+	}else{
+		let ind = currentChosenHighlights.indexOf(event.target.dataset.id)
+		if(ind > -1){
+			currentChosenHighlights.splice(ind, 1);
+		}
+		natal.setHighlightedBonds(currentChosenHighlights)
+		event.target.style.fontWeight = "normal"
+		event.target.dataset.highlight = "false"
+	}
+}
+
+btnResetHighlights.onclick = (event) => {
+	natal.clearHighlights()
+	currentChosenHighlights = []
+	outputBonds.childNodes.forEach((el) => {
+		if(el.className == "bondLine"){
+			el.style.fontWeight = "normal"
+			el.dataset.highlight = false
+		}
+	})
+	
+}
 
 
 //for debug
